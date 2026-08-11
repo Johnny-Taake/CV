@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>John Doe - Front-End Developer CV</title>
+  <style>
+    :root {
+      --bg: oklch(1.000 0.000 89.9);
+      --surface: oklch(0.988 0.007 53.4);
+      --fg: oklch(0.152 0.009 285.3);
+      --muted: oklch(0.461 0.016 341.0);
+      --border: oklch(0.904 0.013 353.2);
+      --accent: oklch(0.528 0.213 22.3);
+      --font-display: "Bodoni 72", "Bodoni MT", "Didot", "Georgia", serif;
+      --font-body: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      --font-mono: "SFMono-Regular", "Cascadia Code", "Liberation Mono", monospace;
+      --signal-soft: oklch(0.955 0.030 357.5);
+      --signal-ring: oklch(0.844 0.078 357.5);
+      --dark-soft: oklch(0.240 0.010 285.3);
+      --shadow: 0 22px 64px oklch(0.152 0.009 285.3 / 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 38px 20px;
+      color: var(--fg);
+      background:
+        linear-gradient(180deg, var(--fg) 0 210px, transparent 210px),
+        var(--bg);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-color: currentColor;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
+
+    a:hover {
+      color: var(--bg);
+      background: var(--fg);
+      text-decoration-color: transparent;
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--signal-ring);
+      outline-offset: 4px;
+    }
+
+    .sheet {
+      max-width: 780px;
+      margin: 0 auto;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      padding: 44px 46px 48px;
+    }
+
+    .header {
+      display: grid;
+      gap: 22px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .name-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: end;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(54px, 8vw, 84px);
+      font-weight: 500;
+      line-height: 0.96;
+      letter-spacing: -0.03em;
+    }
+
+    .last-name {
+      color: var(--accent);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      justify-content: flex-end;
+      color: var(--muted);
+      font: 500 13px/1.4 var(--font-mono);
+    }
+
+    .position {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--fg);
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .desc {
+      display: block;
+      max-width: 66ch;
+      color: var(--dark-soft);
+      font-size: 17px;
+    }
+
+    .details {
+      display: grid;
+      gap: 34px;
+      margin-top: 34px;
+    }
+
+    .section {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 28px;
+    }
+
+    .section__title {
+      margin: 0;
+      font: 600 12px/1.2 var(--font-body);
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .section__list {
+      display: grid;
+      gap: 22px;
+    }
+
+    .section__list-item {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section__list-item:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .project-list .section__list-item {
+      grid-template-columns: 1fr;
+      background: var(--signal-soft);
+      border: 1px solid var(--border);
+      padding: 18px;
+    }
+
+    .name,
+    .role-name {
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .addr,
+    .duration,
+    .desc-small {
+      color: var(--muted);
+      font: 500 13px/1.45 var(--font-mono);
+    }
+
+    .text {
+      color: var(--dark-soft);
+    }
+
+    .skills {
+      display: grid;
+      gap: 14px;
+    }
+
+    .skills__item {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      gap: 20px;
+      align-items: center;
+    }
+
+    .skill-dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .skill-dots span {
+      width: 16px;
+      height: 16px;
+      border: 1px solid var(--fg);
+      border-radius: 50%;
+      background: transparent;
+    }
+
+    .skill-dots span.is-filled {
+      background: var(--fg);
+    }
+
+    .interests {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .interests span {
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      color: var(--dark-soft);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .details .section:first-child {
+      border-top: 2px solid var(--accent);
+      padding-top: 24px;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding: 0;
+        background: var(--bg);
+      }
+
+      .sheet {
+        max-width: none;
+        box-shadow: none;
+        padding: 34px 24px 42px;
+      }
+
+      .name-row,
+      .section,
+      .section__list-item,
+      .skills__item {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-info {
+        justify-content: flex-start;
+      }
+
+      .section {
+        gap: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="sheet" data-od-id="john-cv-sheet">
+    <header class="header" data-od-id="john-header">
+      <div class="name-row" data-od-id="john-name-row">
+        <h1 data-od-id="john-name"><span class="first-name">John</span> <span class="last-name">Doe</span></h1>
+        <div class="contact-info" data-od-id="john-contact-info">
+          <span data-od-id="john-email">john.doe@gmail.com</span>
+          <span data-od-id="john-phone">111-222-3333</span>
+        </div>
+      </div>
+
+      <div class="about" data-od-id="john-about">
+        <span class="position" data-od-id="john-position">Front-End Developer</span>
+        <span class="desc" data-od-id="john-summary">
+          Front-end developer with more than three years of experience writing HTML, CSS, and JavaScript,
+          focused on practical UI delivery and team-oriented product work.
+        </span>
+      </div>
+    </header>
+
+    <main class="details" data-od-id="john-details">
+      <section class="section" data-od-id="john-experience-section">
+        <h2 class="section__title" data-od-id="john-experience-heading">Experience</h2>
+        <div class="section__list">
+          <article class="section__list-item" data-od-id="john-experience-klowdbox">
+            <div>
+              <div class="name">KlowdBox</div>
+              <div class="addr">San Francisco, CA</div>
+              <div class="duration">Jan 2011 - Feb 2015</div>
+            </div>
+            <div>
+              <div class="role-name">Front-End Developer</div>
+              <div class="text">Built interface components and front-end flows for web product work.</div>
+            </div>
+          </article>
+          <article class="section__list-item" data-od-id="john-experience-akount">
+            <div>
+              <div class="name">Akount</div>
+              <div class="addr">Santa Monica, CA</div>
+              <div class="duration">Jan 2011 - Feb 2015</div>
+            </div>
+            <div>
+              <div class="role-name">Front-End Developer</div>
+              <div class="text">Supported HTML, CSS, and JavaScript implementation across product screens.</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" data-od-id="john-education-section">
+        <h2 class="section__title" data-od-id="john-education-heading">Education</h2>
+        <div class="section__list">
+          <article class="section__list-item" data-od-id="john-education-institute">
+            <div>
+              <div class="name">Institute name not supplied</div>
+              <div class="addr">San Francisco, CA</div>
+              <div class="duration">Jan 2011 - Feb 2015</div>
+            </div>
+            <div>
+              <div class="role-name">Technology Program</div>
+              <div class="desc-small">Original template did not include degree details.</div>
+            </div>
+          </article>
+          <article class="section__list-item" data-od-id="john-education-akount">
+            <div>
+              <div class="name">Akount</div>
+              <div class="addr">Santa Monica, CA</div>
+              <div class="duration">Jan 2011 - Feb 2015</div>
+            </div>
+            <div>
+              <div class="role-name">Front-End Development Track</div>
+              <div class="desc-small">Course or credential details were not supplied.</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" data-od-id="john-projects-section">
+        <h2 class="section__title" data-od-id="john-projects-heading">Projects</h2>
+        <div class="section__list project-list">
+          <article class="section__list-item" data-od-id="john-project-dsp-one">
+            <div class="name">DSP</div>
+            <div class="text">
+              Front-end project focused on HTML, CSS, and JavaScript delivery for a product team.
+            </div>
+          </article>
+          <article class="section__list-item" data-od-id="john-project-dsp-two">
+            <div class="name">DSP Interface Iteration</div>
+            <div class="text">
+              Iteration pass for the same product area, with emphasis on implementation quality and UI consistency.
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" data-od-id="john-skills-section">
+        <h2 class="section__title" data-od-id="john-skills-heading">Skills</h2>
+        <div class="skills">
+          <div class="skills__item" data-od-id="john-skill-javascript">
+            <div class="name">JavaScript</div>
+            <div class="skill-dots" aria-label="JavaScript skill rating: 2 of 5">
+              <span class="is-filled"></span><span class="is-filled"></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="skills__item" data-od-id="john-skill-css">
+            <div class="name">CSS</div>
+            <div class="skill-dots" aria-label="CSS skill rating: 2 of 5">
+              <span class="is-filled"></span><span class="is-filled"></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" data-od-id="john-interests-section">
+        <h2 class="section__title" data-od-id="john-interests-heading">Interests</h2>
+        <div class="interests" data-od-id="john-interests-list">
+          <span data-od-id="john-interest-football">Football</span>
+          <span data-od-id="john-interest-programming">Programming</span>
+        </div>
+      </section>
+    </main>
+  </article>
+</body>
+</html>

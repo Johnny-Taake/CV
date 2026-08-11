@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naomi Weatherford - Frontend Web Designer CV</title>
+  <style>
+    :root {
+      --bg: oklch(1.000 0.000 89.9);
+      --surface: oklch(0.988 0.007 53.4);
+      --fg: oklch(0.152 0.009 285.3);
+      --muted: oklch(0.461 0.016 341.0);
+      --border: oklch(0.904 0.013 353.2);
+      --accent: oklch(0.528 0.213 22.3);
+      --font-display: "Bodoni 72", "Bodoni MT", "Didot", "Georgia", serif;
+      --font-body: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      --font-mono: "SFMono-Regular", "Cascadia Code", "Liberation Mono", monospace;
+      --signal: oklch(0.844 0.078 357.5);
+      --signal-soft: oklch(0.955 0.030 357.5);
+      --dark-soft: oklch(0.240 0.010 285.3);
+      --shadow: 0 24px 70px oklch(0.152 0.009 285.3 / 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--fg);
+      background:
+        linear-gradient(90deg, var(--fg) 0 30%, transparent 30%),
+        var(--bg);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-color: currentColor;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
+
+    a:hover {
+      color: var(--bg);
+      background: var(--fg);
+      text-decoration-color: transparent;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--signal);
+      outline-offset: 4px;
+    }
+
+    button {
+      min-height: 44px;
+      border: 1px solid var(--fg);
+      border-radius: 0;
+      padding: 0 18px;
+      color: var(--fg);
+      background: transparent;
+      font: 600 12px/1 var(--font-body);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    button:hover {
+      color: var(--bg);
+      background: var(--fg);
+    }
+
+    .page-shell {
+      width: min(1180px, calc(100% - 40px));
+      margin: 32px auto;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 330px minmax(0, 1fr);
+      min-height: calc(100vh - 64px);
+    }
+
+    .sidebar {
+      color: var(--bg);
+      background: var(--fg);
+      padding: 44px 34px;
+      display: flex;
+      flex-direction: column;
+      gap: 38px;
+    }
+
+    .monogram {
+      width: 96px;
+      height: 96px;
+      border: 1px solid oklch(1 0 89.9 / 0.26);
+      display: grid;
+      place-items: center;
+      font-family: var(--font-display);
+      font-size: 38px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .sidebar h2,
+    .main h2 {
+      margin: 0 0 14px;
+      font: 600 12px/1.2 var(--font-body);
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .sidebar p,
+    .sidebar li {
+      color: oklch(0.880 0.004 89.9);
+    }
+
+    .identity {
+      display: grid;
+      gap: 12px;
+    }
+
+    .identity h1 {
+      max-width: 9ch;
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(52px, 7vw, 86px);
+      font-weight: 500;
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+    }
+
+    .role {
+      margin: 0;
+      max-width: 26ch;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: lowercase;
+    }
+
+    .contact-list,
+    .social-list,
+    .skill-list,
+    .timeline,
+    .education-list,
+    .interest-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      font-size: 14px;
+    }
+
+    .contact-list a,
+    .social-list a {
+      display: inline-flex;
+      min-height: 30px;
+      align-items: center;
+      padding: 2px 0;
+    }
+
+    .social-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 16px;
+      font-size: 13px;
+    }
+
+    .main {
+      padding: 46px 52px 52px;
+      display: grid;
+      gap: 36px;
+      background:
+        linear-gradient(180deg, oklch(1 0 89.9 / 0.72), transparent 210px),
+        var(--surface);
+    }
+
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 22px;
+    }
+
+    .kicker {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font: 600 12px/1 var(--font-mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .summary {
+      max-width: 65ch;
+      margin: 0;
+      color: var(--dark-soft);
+      font-size: 18px;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
+      gap: 42px;
+      align-items: start;
+    }
+
+    .section-panel {
+      min-width: 0;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 24px;
+      padding-left: 24px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      inset: 4px auto 4px 5px;
+      width: 2px;
+      background: var(--accent);
+    }
+
+    .timeline-item {
+      position: relative;
+      display: grid;
+      gap: 4px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -24px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      background: var(--surface);
+      border: 2px solid var(--fg);
+      border-radius: 50%;
+    }
+
+    .item-title {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.25;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+
+    .meta {
+      color: var(--muted);
+      font: 500 13px/1.45 var(--font-mono);
+    }
+
+    .skill-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .skill-row {
+      display: grid;
+      gap: 7px;
+    }
+
+    .skill-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--fg);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .skill-meter {
+      height: 10px;
+      background: oklch(0.930 0.009 353.2);
+      overflow: hidden;
+    }
+
+    .skill-meter span {
+      display: block;
+      height: 100%;
+      width: var(--level);
+      background: var(--fg);
+    }
+
+    .frontend-signal {
+      border: 1px solid var(--border);
+      background: var(--signal-soft);
+      padding: 22px;
+    }
+
+    .frontend-signal h2 {
+      margin-bottom: 10px;
+    }
+
+    .frontend-signal p {
+      margin: 0;
+      color: var(--dark-soft);
+    }
+
+    .education-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .education-list li {
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+    }
+
+    .education-list strong {
+      display: block;
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
+    .interest-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .interest-list li {
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      color: var(--dark-soft);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .print-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 36ch;
+    }
+
+    @media (max-width: 880px) {
+      body {
+        background: var(--bg);
+      }
+
+      .page-shell {
+        width: 100%;
+        margin: 0;
+        grid-template-columns: 1fr;
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        padding: 34px 24px;
+      }
+
+      .identity h1 {
+        max-width: 12ch;
+        font-size: clamp(48px, 15vw, 72px);
+      }
+
+      .main {
+        padding: 34px 24px 42px;
+      }
+
+      .topline,
+      .section-grid {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .topline {
+        align-items: start;
+      }
+
+      .section-grid {
+        gap: 30px;
+      }
+    }
+
+    @media print {
+      body {
+        background: var(--bg);
+      }
+
+      .page-shell {
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+      }
+
+      button {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="page-shell" data-od-id="cv-layout">
+    <aside class="sidebar" data-od-id="profile-sidebar">
+      <div class="monogram" aria-hidden="true" data-od-id="profile-monogram">NW</div>
+
+      <section class="identity" data-od-id="identity-section">
+        <h1 data-od-id="candidate-name">Naomi Weatherford</h1>
+        <p class="role" data-od-id="candidate-role">Frontend Web Designer</p>
+      </section>
+
+      <section data-od-id="about-section">
+        <h2 data-od-id="about-heading">About</h2>
+        <p data-od-id="about-copy">
+          Web designer specializing in web design, graphic design, UX, responsive systems,
+          social media management, and prototyping.
+        </p>
+      </section>
+
+      <section data-od-id="contact-section">
+        <h2 data-od-id="contact-heading">Contact</h2>
+        <ul class="contact-list">
+          <li data-od-id="contact-phone"><a href="tel:123-456-7890">123-456-7890</a></li>
+          <li data-od-id="contact-location">Provo, Utah</li>
+          <li data-od-id="contact-email"><a href="mailto:astronaomical@gmail.com">astronaomical@gmail.com</a></li>
+          <li data-od-id="contact-site"><a href="http://astronaomical.com/">astronaomical.com</a></li>
+        </ul>
+      </section>
+
+      <section data-od-id="social-section">
+        <h2 data-od-id="social-heading">Selected Links</h2>
+        <ul class="social-list">
+          <li data-od-id="social-link-linkedin"><a href="https://www.linkedin.com/in/naomi-weatherford-758385112/">LinkedIn</a></li>
+          <li data-od-id="social-link-behance"><a href="https://www.behance.net/astronaomical">Behance</a></li>
+          <li data-od-id="social-link-codepen"><a href="https://codepen.io/astronaomical/">CodePen</a></li>
+          <li data-od-id="social-link-instagram"><a href="https://www.instagram.com/astronaomical/">Instagram</a></li>
+        </ul>
+      </section>
+    </aside>
+
+    <main class="main" data-od-id="cv-main">
+      <header class="topline" data-od-id="cv-intro">
+        <div>
+          <p class="kicker" data-od-id="cv-kicker">Editorial CV sketch / frontend signal</p>
+          <p class="summary" data-od-id="cv-summary">
+            A sharper resume layout for a designer who works across UI craft, responsive frontend
+            detail, and production-ready visual systems.
+          </p>
+        </div>
+        <button type="button" onclick="window.print()" data-od-id="print-button">Print CV</button>
+      </header>
+
+      <section class="section-grid" data-od-id="work-and-skills">
+        <div class="section-panel" data-od-id="experience-section">
+          <h2 data-od-id="experience-heading">Experience</h2>
+          <ol class="timeline">
+            <li class="timeline-item" data-od-id="experience-fiserv">
+              <h3 class="item-title">Technical Consultant - Web Design</h3>
+              <div class="meta">Fiserv / Apr 2018 - Now</div>
+            </li>
+            <li class="timeline-item" data-od-id="experience-lynden-designer">
+              <h3 class="item-title">Web Designer</h3>
+              <div class="meta">Lynden / Jan 2018 - Apr 2018</div>
+            </li>
+            <li class="timeline-item" data-od-id="experience-lynden-intern">
+              <h3 class="item-title">Intern - Web Design</h3>
+              <div class="meta">Lynden / Aug 2017 - Dec 2017</div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="section-panel" data-od-id="skills-section">
+          <h2 data-od-id="skills-heading">Programming Skills</h2>
+          <ul class="skill-list">
+            <li class="skill-row" data-od-id="skill-html">
+              <div class="skill-label"><span>HTML5</span><span>95</span></div>
+              <div class="skill-meter" aria-hidden="true"><span style="--level: 95%"></span></div>
+            </li>
+            <li class="skill-row" data-od-id="skill-css">
+              <div class="skill-label"><span>CSS3 &amp; SCSS</span><span>90</span></div>
+              <div class="skill-meter" aria-hidden="true"><span style="--level: 90%"></span></div>
+            </li>
+            <li class="skill-row" data-od-id="skill-js">
+              <div class="skill-label"><span>JavaScript</span><span>60</span></div>
+              <div class="skill-meter" aria-hidden="true"><span style="--level: 60%"></span></div>
+            </li>
+            <li class="skill-row" data-od-id="skill-json">
+              <div class="skill-label"><span>JSON</span><span>40</span></div>
+              <div class="skill-meter" aria-hidden="true"><span style="--level: 40%"></span></div>
+            </li>
+            <li class="skill-row" data-od-id="skill-postgresql">
+              <div class="skill-label"><span>PostgreSQL</span><span>40</span></div>
+              <div class="skill-meter" aria-hidden="true"><span style="--level: 40%"></span></div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="frontend-signal" data-od-id="frontend-signal">
+        <h2 data-od-id="frontend-signal-heading">Frontend Signal</h2>
+        <p data-od-id="frontend-signal-copy">
+          The pink layer is reserved for the frontend competency area: soft enough to stay professional,
+          distinct enough to separate craft and implementation from the editorial CV frame.
+        </p>
+      </section>
+
+      <section class="section-grid" data-od-id="education-and-interests">
+        <div class="section-panel" data-od-id="education-section">
+          <h2 data-od-id="education-heading">Education</h2>
+          <ul class="education-list">
+            <li data-od-id="education-byu">
+              <strong>Bachelor of Science, Web Design and Development</strong>
+              <span class="meta">BYU-Idaho / Jan 2016 - Apr 2018</span>
+            </li>
+            <li data-od-id="education-edmonds">
+              <strong>Computer Science</strong>
+              <span class="meta">Edmonds Community College / Sept 2014 - Dec 2015</span>
+            </li>
+            <li data-od-id="education-high-school">
+              <strong>High School</strong>
+              <span class="meta">Henry M. Jackson High School / Jan 2013 - Jun 2015</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="section-panel" data-od-id="interests-section">
+          <h2 data-od-id="interests-heading">Interests</h2>
+          <ul class="interest-list">
+            <li data-od-id="interest-art">Art</li>
+            <li data-od-id="interest-books">Books</li>
+            <li data-od-id="interest-movies">Movies</li>
+            <li data-od-id="interest-music">Music</li>
+            <li data-od-id="interest-games">Games</li>
+          </ul>
+          <p class="print-note" data-od-id="print-note">
+            Designed as a print-friendly one-page sketch with responsive stacking for narrow screens.
+          </p>
+        </div>
+      </section>
+    </main>
+  </article>
+</body>
+</html>
