@@ -1,0 +1,389 @@
+<!--
+Generated from: Ivan Aleksandrovskii (Bartender).typ
+Command: ./build_typst_print_html.sh
+Theme: HTML_Resume/src/data/theme.json
+Notes: Typst HTML export is experimental; this wrapper adds browser print CSS from JSON theme tokens.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ivan Aleksandrovskii - Bartender CV</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%0A%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%23fffaf7%22%2F%3E%0A%3Cpath%20d%3D%22M18%2013h28l-8%2023H26L18%2013Z%22%20fill%3D%22none%22%20stroke%3D%22%23c9002b%22%20stroke-width%3D%225%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M24%2023h16M32%2036v12M23%2051h18%22%20stroke%3D%22%23c9002b%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3Ccircle%20cx%3D%2243%22%20cy%3D%2216%22%20r%3D%225%22%20fill%3D%22%23c9002b%22%2F%3E%0A%3C%2Fsvg%3E">
+    <style>
+      :root {
+        color: #0b0b0f;
+        background: #0b0b0f;
+        font-family: "Inter", "Segoe UI", Arial, sans-serif;
+        font-size: 10pt;
+        line-height: 1.45;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        max-width: 8.5in;
+        margin: 0.42in auto;
+        padding: 0.7in;
+        color: #0b0b0f;
+        background: #fffaf7;
+        border: 1px solid #eadfe3;
+        border-radius: 6px;
+        box-shadow: 0 24px 80px rgb(11 11 15 / 24%);
+      }
+
+      a {
+        color: #c9002b;
+        text-decoration-color: #c9002b;
+        text-underline-offset: 2px;
+        transition:
+          background-color 0.18s ease,
+          color 0.18s ease,
+          text-decoration-color 0.18s ease;
+      }
+
+      a:hover {
+        color: #fffaf7;
+        background: #c9002b;
+        text-decoration-color: transparent;
+      }
+
+      p {
+        margin: 0 0 0.55em;
+      }
+
+      ul {
+        margin: 0.25em 0 0.75em;
+        padding-left: 1.2em;
+      }
+
+      li > p {
+        margin: 0 0 0.2em;
+      }
+
+      body > p:first-of-type {
+        margin-bottom: 0.15em;
+        color: #c9002b;
+        font-size: 24pt;
+        line-height: 1.05;
+        text-align: center;
+      }
+
+      body > p:nth-of-type(2) {
+        text-align: center;
+      }
+
+      body > p:nth-of-type(2) {
+        margin-bottom: 0.38em;
+        color: #2a2529;
+      }
+
+      .lead-summary {
+        margin: 0.75em 0 0.68em;
+        padding: 0.12in 0.16in;
+        border-left: 3pt solid #c9002b;
+        background: #fff1f6;
+        color: #2a2529;
+        font-size: 10.5pt;
+        line-height: 1.5;
+        text-align: left;
+        hyphens: none;
+        break-inside: avoid;
+      }
+
+      .contact-card {
+        margin: 0.35em 0 1.05em;
+        padding: 0.14in;
+        border: 0.5pt solid #eadfe3;
+        background: #fffaf7;
+        break-inside: avoid;
+        transition:
+          border-color 0.18s ease,
+          box-shadow 0.18s ease,
+          transform 0.18s ease;
+      }
+
+      .contact-card h2 {
+        margin: 0 0 0.1in;
+        color: #c9002b;
+        font-size: 10pt;
+        line-height: 1.2;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .contact-card:hover {
+        border-color: #c9002b;
+        box-shadow: 0 10px 34px rgb(201 0 43 / 10%);
+        transform: translateY(-1px);
+      }
+
+      .contact-card dl {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.06in 0.22in;
+        margin: 0;
+      }
+
+      .contact-card div {
+        display: grid;
+        grid-template-columns: 0.82in minmax(0, 1fr);
+        gap: 0.08in;
+        align-items: baseline;
+        min-width: 0;
+      }
+
+      .contact-card dt {
+        color: #6f6368;
+        font-weight: 700;
+      }
+
+      .contact-card dd {
+        margin: 0;
+        overflow-wrap: anywhere;
+      }
+
+      p:has(> strong > span[style*="underline"]) {
+        margin-top: 1.2em;
+        margin-bottom: 0.55em;
+        padding-bottom: 0.16in;
+        border-bottom: 0.5pt solid #eadfe3;
+        color: #c9002b;
+        font-size: 13pt;
+        line-height: 1.2;
+        text-transform: uppercase;
+        transition:
+          color 0.18s ease,
+          border-color 0.18s ease;
+      }
+
+      p:has(> strong > span[style*="underline"]):hover {
+        border-color: #c9002b;
+      }
+
+      @media screen and (max-width: 760px) {
+        body {
+          margin: 0;
+          border-radius: 0;
+          border-inline: 0;
+          padding: 0.45in;
+        }
+
+        .contact-card dl {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @page {
+        size: us-letter;
+        margin: 0.7in;
+      }
+
+      @media print {
+        :root,
+        body {
+          background: #ffffff;
+        }
+
+        body {
+          max-width: none;
+          margin: 0;
+          padding: 0;
+          border: 0;
+          border-radius: 0;
+          box-shadow: none;
+        }
+
+        a {
+          color: #c9002b;
+        }
+
+        .contact-card {
+          background: #ffffff;
+          transition: none;
+          transform: none;
+          box-shadow: none;
+        }
+
+        .lead-summary {
+          background: #ffffff;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <p><strong>Ivan Aleksandrovskii</strong></p>
+    <p><strong>Bartender / Bar Manager / HoReCa Operations</strong></p>
+        <section class="contact-card" aria-label="Contact information">
+      <h2>Contact</h2>
+      <dl>
+        <div>
+          <dt>Location</dt>
+          <dd>Bangkok, Thailand</dd>
+        </div>
+        <div>
+          <dt>Email</dt>
+          <dd><a href="mailto:ivan.vered@gmail.com">ivan.vered@gmail.com</a></dd>
+        </div>
+        <div>
+          <dt>Telegram</dt>
+          <dd><a href="https://t.me/Johnny_Taake">@Johnny_Taake</a></dd>
+        </div>
+        <div>
+          <dt>Line QR</dt>
+          <dd><a href="https://line.me/ti/p/IzRK5OQuEO">line.me/ti/p/IzRK5OQuEO</a></dd>
+        </div>
+        <div>
+          <dt>LinkedIn</dt>
+          <dd><a href="https://linkedin.com/in/ivan-alexandrovsky">linkedin.com/in/ivan-alexandrovsky</a></dd>
+        </div>
+      </dl>
+    </section>
+<p class="lead-summary">Hospitality professional with 5+ years of bar, restaurant, hotel lobby bar, event bar, and beverage operations experience in Saint Petersburg and Thailand. My background covers guest-facing cocktail service, wine guidance, food menu sales, opening operations, inventory control, staff coordination, supplier communication, active sales, and cash/register discipline.</p>
+    <p>I work well in high-volume service environments where speed, clean standards, guest attention, and team coordination matter. I can run a bar shift hands-on, support menu and cocktail development, sell dishes through confident menu knowledge, guide guests through wines, train staff, control stock, and keep operations structured during busy service or events.</p>
+    <p><strong>Core hospitality stack:</strong> Classic and signature cocktails · IBA recipes · non-alcoholic mixes · wine navigation · food menu sales · beer service · coffee preparation · lobby bar and room service · event bars · inventory · cash register · supplier communication · active sales · staff training</p>
+    <p><strong><span style="text-decoration: underline">HOSPITALITY STACK</span></strong></p>
+    <p><strong>Bar Service:</strong> Alcoholic cocktails · signature cocktails · non-alcoholic mixes · wine guidance · food menu sales · beer navigation · responsible service · menu knowledge · order taking · guest communication</p>
+    <p><strong>Beverage Knowledge:</strong> IBA cocktails · Russian wine market · basic coffee preparation · lobby bar service · room service drinks</p>
+    <p><strong>Operations:</strong> Opening preparation · shift coordination · cash register management · order calculation · inventory checks · stock and demand control · quality control</p>
+    <p><strong>Management:</strong> Evening shift management · event bar management · staff training · customer relationship management · active sales · supplier and client communication</p>
+    <p><strong>Business Tools:</strong> Excel-based cash register · invoice preparation · sales tracking · market research · basic data analysis</p>
+    <p><strong>Languages:</strong> Russian native · English C1 advanced · German A1 basic · Thai learning</p>
+    <p><strong><span style="text-decoration: underline">WORK EXPERIENCE</span></strong></p>
+    <p><strong>Wholesale Manager Oct 2022 – Sep 2023</strong></p>
+    <p><strong>Phuket Distribution Team, Thailand</strong></p>
+    <p>Worked in distribution operations after relocating to Thailand, combining sales, stock control, customer relations, and financial tracking.</p>
+    <p><em>Results:</em></p>
+    <ul>
+      <li>
+        <p>Built and supported a distribution strategy for wholesale operations</p>
+      </li>
+      <li>
+        <p>Checked stock levels and demand patterns to keep inventory aligned with active sales</p>
+      </li>
+      <li>
+        <p>Managed customer relations, active sales, marketing tasks, and quality control</p>
+      </li>
+      <li>
+        <p>Prepared invoices and maintained an Excel-based cash register</p>
+      </li>
+      <li>
+        <p>Used sales data and market research to track performance and spot practical improvements</p>
+      </li>
+    </ul>
+    <p><strong>Opening and Event Bar Manager Mar 2021 – Sep 2022</strong></p>
+    <p><strong>Ganino Farm Country Club, Saint Petersburg</strong></p>
+    <p>Supported bar opening, beverage operations, and event service in a country club environment.</p>
+    <p><em>Results:</em></p>
+    <ul>
+      <li>
+        <p>Managed bar operations for opening and event formats</p>
+      </li>
+      <li>
+        <p>Developed beverage menu ideas and supported cocktail creation</p>
+      </li>
+      <li>
+        <p>Trained and coordinated bar staff during service preparation and events</p>
+      </li>
+      <li>
+        <p>Controlled inventory, compliance, service standards, and guest experience</p>
+      </li>
+      <li>
+        <p>Coordinated bar workflow with event requirements and customer expectations</p>
+      </li>
+    </ul>
+    <p><strong>Bartender / Evening Shift Manager Feb 2021 – Sep 2022</strong></p>
+    <p><strong>Kapital Bar, Saint Petersburg</strong></p>
+    <p>Worked as a bartender and evening shift manager with responsibility for cocktails, guest service, orders, and operational discipline.</p>
+    <p><em>Results:</em></p>
+    <ul>
+      <li>
+        <p>Crafted IBA and signature alcoholic cocktails</p>
+      </li>
+      <li>
+        <p>Prepared non-alcoholic mixes and coffee after the barista shift</p>
+      </li>
+      <li>
+        <p>Worked with wine recommendations and guest navigation through the wine offer</p>
+      </li>
+      <li>
+        <p>Took orders, calculated bills, managed cash register operations, and handled guest requests</p>
+      </li>
+      <li>
+        <p>Checked inventory and supported smooth evening shift operations</p>
+      </li>
+    </ul>
+    <p><strong>Bartender Aug 2019 – Feb 2021</strong></p>
+    <p><strong>Wine and Water Restaurant, Hotel Indigo 5*, Saint Petersburg</strong></p>
+    <p>Worked across restaurant bar duties, night lobby bar service, and room service in a five-star hotel setting.</p>
+    <p><em>Results:</em></p>
+    <ul>
+      <li>
+        <p>Prepared alcoholic cocktails, non-alcoholic mixes, wine service, and coffee drinks for restaurant guests</p>
+      </li>
+      <li>
+        <p>Covered lobby bar night shifts with room service responsibilities</p>
+      </li>
+      <li>
+        <p>Took and calculated orders, managed cash register operations, and delivered orders to rooms</p>
+      </li>
+      <li>
+        <p>Maintained inventory checks and service standards in both restaurant and lobby bar formats</p>
+      </li>
+    </ul>
+    <p><strong>Bartender Sep 2018 – Jun 2019</strong></p>
+    <p><strong>Sky Bar, Saint Petersburg</strong></p>
+    <p>Worked in cocktail service with focus on IBA classics, signature drinks, non-alcoholic mixes, coffee, and stock checks.</p>
+    <p><em>Results:</em></p>
+    <ul>
+      <li>
+        <p>Crafted alcoholic cocktails and signature drinks</p>
+      </li>
+      <li>
+        <p>Prepared non-alcoholic mixes and coffee drinks</p>
+      </li>
+      <li>
+        <p>Supported inventory assessments and clean shift handover</p>
+      </li>
+    </ul>
+    <p><strong>Waiter Apr 2018 – Jun 2018</strong></p>
+    <p><strong>Hard Rock Cafe, Saint Petersburg</strong></p>
+    <p>Joined the floor team around grand opening preparation and the Football World Championship season.</p>
+    <p><em>Results:</em></p>
+    <ul>
+      <li>
+        <p>Prepared for grand opening service under network standards</p>
+      </li>
+      <li>
+        <p>Worked floor service during a high-traffic international event season</p>
+      </li>
+      <li>
+        <p>Followed brand service standards and team procedures</p>
+      </li>
+    </ul>
+    <p><strong>Bartender May 2017 – Mar 2018</strong></p>
+    <p><strong>Mollie’s Pub, Saint Petersburg</strong></p>
+    <p>Started in pub bar service with a focus on beer navigation, responsible service, inventory discipline, and menu knowledge.</p>
+    <p><em>Results:</em></p>
+    <ul>
+      <li>
+        <p>Guided guests through beer selection and menu options</p>
+      </li>
+      <li>
+        <p>Served responsibly in a pub environment</p>
+      </li>
+      <li>
+        <p>Supported inventory management and daily bar readiness</p>
+      </li>
+    </ul>
+    <p><strong><span style="text-decoration: underline">EDUCATION</span></strong></p>
+    <p><strong>Saint Petersburg State University of Aerospace Instrumentation (SUAI), 2022</strong></p>
+    <p><em>Higher education track,</em> Radio Engineering, Optical Fiber.</p>
+    <p><strong><span style="text-decoration: underline">ADDITIONAL</span></strong></p>
+    <p><strong>Driving:</strong> Driver’s license categories A and B</p>
+    <p><strong>Personal profile:</strong> Active, disciplined, competitive, and comfortable with busy service shifts. I enjoy direct guest interaction, teamwork, precise preparation, and the pace of bar operations.</p>
+  </body>
+</html>

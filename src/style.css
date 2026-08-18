@@ -9,6 +9,9 @@
   --pink: #f7b7cc;
   --pink-soft: #fff1f6;
   --shadow: 0 24px 80px rgb(11 11 15 / 12%);
+  --shell-max-width: 1220px;
+  --shell-gutter: 20px;
+  --sidebar-width: 330px;
   --display: Georgia, 'Times New Roman', serif;
   --body: Aptos, 'Segoe UI', Arial, sans-serif;
   --mono: 'SFMono-Regular', 'Cascadia Code', 'Liberation Mono', monospace;
@@ -35,8 +38,32 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background:
-    linear-gradient(90deg, var(--ink) 0 30%, transparent 30%),
+    linear-gradient(
+      90deg,
+      var(--ink) 0 calc(max(var(--shell-gutter), (100vw - var(--shell-max-width)) / 2) + var(--sidebar-width)),
+      transparent calc(max(var(--shell-gutter), (100vw - var(--shell-max-width)) / 2) + var(--sidebar-width))
+    ),
     var(--bg);
+}
+
+@keyframes hover-breath {
+  from {
+    box-shadow: 0 0 0 0 rgb(201 0 43 / 38%);
+  }
+
+  to {
+    box-shadow: 0 0 0 8px rgb(201 0 43 / 0%);
+  }
+}
+
+@keyframes hover-breath-light {
+  from {
+    box-shadow: 0 0 0 0 rgb(247 183 204 / 42%);
+  }
+
+  to {
+    box-shadow: 0 0 0 8px rgb(247 183 204 / 0%);
+  }
 }
 
 button,
@@ -83,10 +110,10 @@ button:hover {
 }
 
 .cv-shell {
-  width: min(1220px, calc(100% - 40px));
+  width: min(var(--shell-max-width), calc(100% - (var(--shell-gutter) * 2)));
   margin: 32px auto;
   display: grid;
-  grid-template-columns: 330px minmax(0, 1fr);
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
   min-height: calc(100vh - 64px);
   background: var(--surface);
   box-shadow: var(--shadow);
@@ -114,6 +141,16 @@ button:hover {
   font-family: var(--display);
   font-size: 36px;
   line-height: 1;
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.sidebar:hover .monogram {
+  border-color: var(--pink);
+  color: var(--pink);
+  animation: hover-breath-light 1.2s infinite;
 }
 
 .identity {
@@ -156,6 +193,12 @@ h1 {
   font-size: clamp(50px, 7vw, 82px);
   font-weight: 500;
   line-height: 0.98;
+}
+
+h1.name {
+  max-width: none;
+  font-size: clamp(24px, 2.75vw, 32px);
+  white-space: nowrap;
 }
 
 h2 {
@@ -211,6 +254,22 @@ h4 {
   min-height: 30px;
   align-items: center;
   gap: 9px;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.contact-list:hover a:not(:hover),
+.resume-nav:hover a:not(:hover) {
+  opacity: 0.5;
+}
+
+.contact-list a:hover,
+.resume-nav a:hover {
+  transform: translateX(4px);
+  animation: hover-breath-light 1.2s infinite;
 }
 
 .plain-list {
@@ -245,6 +304,11 @@ h4 {
   align-items: center;
   color: rgb(255 250 247 / 86%);
   font-size: 14px;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .main {
@@ -282,6 +346,15 @@ h4 {
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.print-button:hover {
+  transform: translateY(-2px);
+  animation: hover-breath 1.2s infinite;
 }
 
 .resume-section {
@@ -289,6 +362,17 @@ h4 {
   gap: 22px;
   padding: 28px 0 2px;
   border-top: 1px solid var(--border);
+  transition:
+    opacity 0.5s ease,
+    transform 0.3s ease;
+}
+
+.main:hover>.resume-section {
+  opacity: 0.58;
+}
+
+.main:hover>.resume-section:hover {
+  opacity: 1;
 }
 
 .lead-section {
@@ -313,6 +397,14 @@ h4 {
   color: var(--red);
   font-size: 12px;
   font-weight: 800;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.resume-section:hover .section-number {
+  color: var(--ink);
+  transform: scale(1.2);
 }
 
 .section-intro,
@@ -334,11 +426,11 @@ h4 {
   align-items: start;
 }
 
-.two-column > div {
+.two-column>div {
   min-width: 0;
 }
 
-.two-column p + p {
+.two-column p+p {
   margin-top: 12px;
 }
 
@@ -357,10 +449,30 @@ h4 {
   font-size: 13px;
   font-weight: 700;
   line-height: 1.25;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .pill-list li {
   background: var(--surface);
+}
+
+.tag-list:hover li:not(:hover),
+.pill-list:hover li:not(:hover) {
+  opacity: 0.48;
+}
+
+.tag-list li:hover,
+.pill-list li:hover {
+  border-color: var(--red);
+  color: var(--ink);
+  background: var(--pink-soft);
+  transform: translateY(-2px);
+  animation: hover-breath 1.2s infinite;
 }
 
 .timeline-block {
@@ -387,6 +499,10 @@ h4 {
   position: relative;
   display: grid;
   gap: 7px;
+  transition:
+    color 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .timeline-item::before {
@@ -399,6 +515,28 @@ h4 {
   border: 2px solid var(--ink);
   border-radius: 50%;
   background: var(--surface);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.timeline:hover .timeline-item:not(:hover) {
+  opacity: 0.52;
+}
+
+.timeline-item:hover {
+  transform: translateX(4px);
+}
+
+.timeline-item:hover::before {
+  border-color: var(--red);
+  background: var(--red);
+  animation: hover-breath 1.2s infinite;
+}
+
+.timeline-item:hover h4 {
+  color: var(--red);
 }
 
 .timeline-item ul {
@@ -432,17 +570,40 @@ h4 {
   background: var(--surface);
   color: var(--ink-soft);
   line-height: 1.48;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.feature-grid:hover li:not(:hover) {
+  opacity: 0.48;
+}
+
+.feature-grid li:hover {
+  border-color: var(--red);
+  color: var(--ink);
+  background: var(--pink-soft);
+  transform: translateY(-3px);
+  animation: hover-breath 1.2s infinite;
 }
 
 .education-section {
   padding-bottom: 16px;
 }
 
-.education-item + .education-item {
+.education-item+.education-item {
   margin-top: 18px;
   padding-top: 18px;
   border-top: 1px solid var(--border);
 }
+
+/* TODO: delete */
+/* h1.name { */
+/*   font-size: 30px; */
+/* } */
 
 @media (max-width: 900px) {
   body {
@@ -467,6 +628,13 @@ h4 {
     font-size: clamp(48px, 15vw, 72px);
   }
 
+  h1.name {
+    max-width: none;
+    font-size: clamp(34px, 10vw, 56px);
+    /* font-size: 10px; */
+    white-space: normal;
+  }
+
   .main {
     padding: 34px 24px 44px;
   }
@@ -484,6 +652,7 @@ h4 {
 }
 
 @media (max-width: 520px) {
+
   .main,
   .sidebar {
     padding-inline: 18px;
@@ -495,6 +664,18 @@ h4 {
 
   .section-head {
     align-items: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

@@ -131,7 +131,9 @@ function printPage() {
 
       <section class="identity">
         <p class="eyebrow">CV package</p>
-        <!-- <h1>Ivan Aleksandrovskii</h1> -->
+        <!-- TODO: Fix - make h1 smaller and also fit the whole section -->
+        <h1 class="name">Ivan Aleksandrovskii</h1>
+        <!-- <h2>Ivan Aleksandrovskii</h2> -->
         <p class="role">Versatile Technical Professional</p>
       </section>
 

@@ -1,0 +1,387 @@
+<!--
+Generated from: Ivan Aleksandrovskii (Backend Developer).typ
+Command: ./build_typst_print_html.sh
+Theme: HTML_Resume/src/data/theme.json
+Notes: Typst HTML export is experimental; this wrapper adds browser print CSS from JSON theme tokens.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ivan Aleksandrovskii - Software Engineer CV</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%0A%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%23fffaf7%22%2F%3E%0A%3Cpath%20d%3D%22M25%2020%2013%2032l12%2012M39%2020l12%2012-12%2012%22%20fill%3D%22none%22%20stroke%3D%22%23c9002b%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M35%2016%2029%2048%22%20stroke%3D%22%230b0b0f%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3C%2Fsvg%3E">
+    <style>
+      :root {
+        color: #0b0b0f;
+        background: #0b0b0f;
+        font-family: "Inter", "Segoe UI", Arial, sans-serif;
+        font-size: 10pt;
+        line-height: 1.45;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        max-width: 8.5in;
+        margin: 0.42in auto;
+        padding: 0.7in;
+        color: #0b0b0f;
+        background: #fffaf7;
+        border: 1px solid #eadfe3;
+        border-radius: 6px;
+        box-shadow: 0 24px 80px rgb(11 11 15 / 24%);
+      }
+
+      a {
+        color: #c9002b;
+        text-decoration-color: #c9002b;
+        text-underline-offset: 2px;
+        transition:
+          background-color 0.18s ease,
+          color 0.18s ease,
+          text-decoration-color 0.18s ease;
+      }
+
+      a:hover {
+        color: #fffaf7;
+        background: #c9002b;
+        text-decoration-color: transparent;
+      }
+
+      p {
+        margin: 0 0 0.55em;
+      }
+
+      ul {
+        margin: 0.25em 0 0.75em;
+        padding-left: 1.2em;
+      }
+
+      li > p {
+        margin: 0 0 0.2em;
+      }
+
+      body > p:first-of-type {
+        margin-bottom: 0.15em;
+        color: #c9002b;
+        font-size: 24pt;
+        line-height: 1.05;
+        text-align: center;
+      }
+
+      body > p:nth-of-type(2) {
+        text-align: center;
+      }
+
+      body > p:nth-of-type(2) {
+        margin-bottom: 0.38em;
+        color: #2a2529;
+      }
+
+      .lead-summary {
+        margin: 0.75em 0 0.68em;
+        padding: 0.12in 0.16in;
+        border-left: 3pt solid #c9002b;
+        background: #fff1f6;
+        color: #2a2529;
+        font-size: 10.5pt;
+        line-height: 1.5;
+        text-align: left;
+        hyphens: none;
+        break-inside: avoid;
+      }
+
+      .contact-card {
+        margin: 0.35em 0 1.05em;
+        padding: 0.14in;
+        border: 0.5pt solid #eadfe3;
+        background: #fffaf7;
+        break-inside: avoid;
+        transition:
+          border-color 0.18s ease,
+          box-shadow 0.18s ease,
+          transform 0.18s ease;
+      }
+
+      .contact-card h2 {
+        margin: 0 0 0.1in;
+        color: #c9002b;
+        font-size: 10pt;
+        line-height: 1.2;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .contact-card:hover {
+        border-color: #c9002b;
+        box-shadow: 0 10px 34px rgb(201 0 43 / 10%);
+        transform: translateY(-1px);
+      }
+
+      .contact-card dl {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.06in 0.22in;
+        margin: 0;
+      }
+
+      .contact-card div {
+        display: grid;
+        grid-template-columns: 0.82in minmax(0, 1fr);
+        gap: 0.08in;
+        align-items: baseline;
+        min-width: 0;
+      }
+
+      .contact-card dt {
+        color: #6f6368;
+        font-weight: 700;
+      }
+
+      .contact-card dd {
+        margin: 0;
+        overflow-wrap: anywhere;
+      }
+
+      p:has(> strong > span[style*="underline"]) {
+        margin-top: 1.2em;
+        margin-bottom: 0.55em;
+        padding-bottom: 0.16in;
+        border-bottom: 0.5pt solid #eadfe3;
+        color: #c9002b;
+        font-size: 13pt;
+        line-height: 1.2;
+        text-transform: uppercase;
+        transition:
+          color 0.18s ease,
+          border-color 0.18s ease;
+      }
+
+      p:has(> strong > span[style*="underline"]):hover {
+        border-color: #c9002b;
+      }
+
+      @media screen and (max-width: 760px) {
+        body {
+          margin: 0;
+          border-radius: 0;
+          border-inline: 0;
+          padding: 0.45in;
+        }
+
+        .contact-card dl {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @page {
+        size: us-letter;
+        margin: 0.7in;
+      }
+
+      @media print {
+        :root,
+        body {
+          background: #ffffff;
+        }
+
+        body {
+          max-width: none;
+          margin: 0;
+          padding: 0;
+          border: 0;
+          border-radius: 0;
+          box-shadow: none;
+        }
+
+        a {
+          color: #c9002b;
+        }
+
+        .contact-card {
+          background: #ffffff;
+          transition: none;
+          transform: none;
+          box-shadow: none;
+        }
+
+        .lead-summary {
+          background: #ffffff;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <p><strong>Ivan Aleksandrovskii</strong></p>
+    <p><strong>Software Engineer (Python / Rust / Fullstack)</strong></p>
+        <section class="contact-card" aria-label="Contact information">
+      <h2>Contact</h2>
+      <dl>
+        <div>
+          <dt>Location</dt>
+          <dd>Bangkok, Thailand (UTC+7)</dd>
+        </div>
+        <div>
+          <dt>Email</dt>
+          <dd><a href="mailto:ivan.aleksandrovskii@gmail.com">ivan.aleksandrovskii@gmail.com</a></dd>
+        </div>
+        <div>
+          <dt>Telegram</dt>
+          <dd><a href="https://t.me/Johnny_Taake">@Johnny_Taake</a></dd>
+        </div>
+        <div>
+          <dt>Line QR</dt>
+          <dd><a href="https://line.me/ti/p/IzRK5OQuEO">line.me/ti/p/IzRK5OQuEO</a></dd>
+        </div>
+        <div>
+          <dt>LinkedIn</dt>
+          <dd><a href="https://linkedin.com/in/ivan-alexandrovsky">linkedin.com/in/ivan-alexandrovsky</a></dd>
+        </div>
+        <div>
+          <dt>GitHub</dt>
+          <dd><a href="https://github.com/Johnny-Taake">github.com/Johnny-Taake</a></dd>
+        </div>
+      </dl>
+    </section>
+<p class="lead-summary">Backend-focused full-stack developer with a background in Python automation, internal tooling, and product-oriented backend development. My path into engineering started with technical automation work and gradually evolved into building backend systems, APIs, Telegram-based products, and internal tools in startup environments.</p>
+    <p>I build scalable backend systems and APIs (REST/gRPC) in Python and Rust, with a focus on performance, maintainability, and practical product delivery. My work also includes AI integrations, backend logic based on evolving prototypes, and full-cycle implementation in fast-moving remote teams. I care about clean architecture and practical engineering decisions that help products move from idea to release.</p>
+    <p><strong>Core stack:</strong> Python · Rust · PostgreSQL · FastAPI · Django · SQLAlchemy · Alembic · Docker · Git · React · TypeScript · gRPC · Protobuf</p>
+    <p><strong><span style="text-decoration: underline">TECH STACK</span></strong></p>
+    <p><strong>Languages:</strong> Python · JavaScript / TypeScript · Rust · SQL · Bash</p>
+    <p><strong>Backend &amp; APIs:</strong> FastAPI · aiohttp · Django · Django REST Framework · Flask · Axum · Tokio · Actix Web · SeaORM · Tonic/gRPC · Celery · RabbitMQ · OAuth2 · Swagger/OpenAPI · Pydantic · SQLAlchemy · Alembic · SQLAdmin</p>
+    <p><strong>Frontend:</strong> Vue · React · Vite · Axios · Telegram Mini Apps SDK · SPA / API-first architecture</p>
+    <p><strong>Databases:</strong> PostgreSQL · MySQL · SQLite · MongoDB · Redis</p>
+    <p><strong>DevOps &amp; Infrastructure:</strong> Docker · Docker Compose · Nginx · VPS deployment · WSL2 · Git · GitHub/GitLab CI/CD (learning)</p>
+    <p><strong>Automation &amp; AI:</strong> Selenium · PyAutoGUI · HuggingFace Transformers · OpenAI API · RAG with vector embeddings (bge-m3)</p>
+    <p><strong>Testing:</strong> pytest · Rust’s cargo test</p>
+    <p><strong>Other:</strong> Git · Protocol Buffers · gRPC · WebSockets · REST · Tmux</p>
+    <p><strong>Learning Focus:</strong> Rust · JavaScript · CI/CD · Kafka · scalable architecture</p>
+    <p><strong><span style="text-decoration: underline">WORK EXPERIENCE</span></strong></p>
+    <p><strong>Full-stack Engineer (Freelance / Self-Employed) Sep 2025 – Present</strong></p>
+    <p>Working on independent technical projects involving backend development, web applications, automation, and AI integrations. Focused on practical engineering tasks, prototyping, system setup, and expanding technical depth through hands-on work.</p>
+    <p><em>Results:</em></p>
+    <ul>
+      <li>
+        <p>Developed backend components for web applications and internal tools</p>
+      </li>
+      <li>
+        <p>Worked on automation setup and workflow optimization for small-scale technical use cases</p>
+      </li>
+      <li>
+        <p>Integrated AI-related features and experimented with practical LLM-assisted workflows</p>
+      </li>
+      <li>
+        <p>Configured environments, databases, and deployment infrastructure for project needs</p>
+      </li>
+      <li>
+        <p>Mentored junior specialists on selected technical tasks and implementation approaches</p>
+      </li>
+      <li>
+        <p>Used this period to deepen engineering practice through independent project work and targeted upskilling</p>
+      </li>
+    </ul>
+    <p><strong>Backend Developer Feb 2025 – Aug 2025</strong></p>
+    <p><strong>Atlantis (remote)</strong></p>
+    <p>The team was building internal engineering products and client solutions for automating developer workflows, including projects in HealthTech and FinTech. Contributed to backend development for a diabetes monitoring platform focused on patient metrics tracking and doctor–patient communication, as well as to internal developer tooling.</p>
+    <p>Worked in a remote engineering team with asynchronous collaboration, product iteration, and cross-functional coordination.</p>
+    <p><em>Results:</em></p>
+    <ul>
+      <li>
+        <p>Designed and maintained backend services in Rust and Python</p>
+      </li>
+      <li>
+        <p>Developed APIs using gRPC</p>
+      </li>
+      <li>
+        <p>Translated Figma-based product designs into backend logic, data models, and technical documentation</p>
+      </li>
+      <li>
+        <p>Troubleshot, debugged, and upgraded backend microservices</p>
+      </li>
+      <li>
+        <p>Built internal tools in TypeScript and RPC-generation utilities in Rust</p>
+      </li>
+      <li>
+        <p>Applied Domain-Driven Design principles in backend implementation</p>
+      </li>
+    </ul>
+    <p><strong>Python Backend Developer Feb 2024 - Jun 2025</strong></p>
+    <p><strong>CHRONA AI / CHRONA AGENCY (remote)</strong></p>
+    <p>Joined the startup at an early stage and gradually took on backend architecture and product implementation responsibilities. Worked on HR and recruitment automation tools, onboarding systems, and Telegram-based applications. Contributed across the full development cycle: backend logic, architecture design, API integrations, deployment, and collaboration with frontend, design, and product stakeholders. Worked in a fast-moving startup environment with evolving requirements, MVP-first delivery, and a high degree of autonomy.</p>
+    <p><em>Results:</em></p>
+    <ul>
+      <li>
+        <p>Designed and implemented Telegram Mini Apps for candidate testing and onboarding flows</p>
+      </li>
+      <li>
+        <p>Developed custom Telegram bots for automation, message routing, test completion, and broadcasting</p>
+      </li>
+      <li>
+        <p>Built backend services with FastAPI and PostgreSQL, including external API integrations</p>
+      </li>
+      <li>
+        <p>Managed Docker-based containerization and VPS deployment</p>
+      </li>
+      <li>
+        <p>Integrated AI solutions using OpenAI and HuggingFace models</p>
+      </li>
+      <li>
+        <p>Interpreted product prototypes and translated them into backend structure and logic</p>
+      </li>
+      <li>
+        <p>Collaborated with UI/UX designers and frontend developers to align implementation with product goals</p>
+      </li>
+    </ul>
+    <p><strong>Python Automation Developer Oct 2022 – Sep 2023</strong></p>
+    <p><strong>NDA Trading Project (Non IT), Thailand (hybrid)</strong></p>
+    <p>Worked on Python-based automation for business operations, sales, data handling, and internal workflows.</p>
+    <p><em>Results:</em></p>
+    <ul>
+      <li>
+        <p>Automated data collection and transformation with Python scripts</p>
+      </li>
+      <li>
+        <p>Built Excel-based and Python-based tools for workflow automation</p>
+      </li>
+      <li>
+        <p>Supported reporting and operational processes through structured data preparation and automation</p>
+      </li>
+    </ul>
+    <p><strong>Python Automation Developer Sep 2021 - Mar 2022</strong></p>
+    <p><strong>Àlber Blanc (Contract), Saint-Petersburg (remote)</strong></p>
+    <p>Supported recruiting operations through Python-based automation and internal workflow tooling.</p>
+    <p><em>Results:</em></p>
+    <ul>
+      <li>
+        <p>Built Python-based automation tools for candidate processing and recruiting workflows</p>
+      </li>
+      <li>
+        <p>Worked with structured data, filtering, and operational support for high-volume hiring tasks</p>
+      </li>
+      <li>
+        <p>Reduced manual work through internal scripts and process automation</p>
+      </li>
+      <li>
+        <p>Gained early commercial experience in Python development and backend-oriented problem solving</p>
+      </li>
+    </ul>
+    <p><strong><span style="text-decoration: underline">EDUCATION</span></strong></p>
+    <p><strong>Saint Petersburg State University of Aerospace Instrumentation (SUAI), 2020</strong></p>
+    <p><em>Incomplete Bachelor's degree,</em> Institute of Radio Engineering and Infocommunication Technologies, Department of Radiotechnical and Optoelectronic Complexes</p>
+    <p><strong>Saint Petersburg State University of Telecommunications (SPbSUT), Specialized Lyceum, 2016</strong><em><br></em>Studied physics and information technologies (C++, algorithms). The lyceum was the first Promethean Centre of Excellence in Russia — an international initiative for interactive tech education.</p>
+    <p><strong><span style="text-decoration: underline">PROJECTS</span></strong></p>
+    <p><strong>MAIN PROJECTS (ATLANTIS)<br></strong></p>
+    <p><strong>Medical Diabetes Monitoring Platform:</strong> Contributed to backend and documentation for a medical platform that tracks diabetic patients’ metrics and provides analytics for doctors and dietitians. <em><strong>Stack:</strong> Rust, Diesel, PostgreSQL, gRPC.</em></p>
+    <p><strong>Crypto Trading (NDA)</strong>: Worked on a confidential project implementing trading logic. <em><strong>Stack:</strong> Python, Numpy, Pandas, Backtrader, PostgreSQL.</em></p>
+    <p><strong>MAIN PROJECTS (CHRONA)</strong></p>
+    <p><strong>Psychological Testing Platform:</strong> Telegram Mini App + admin panel (React + FastAPI) for conducting tests directly in chat. <em><strong>Stack:</strong> FastAPI, PostgreSQL, Aiogram, Docker, VPS deployment.</em></p>
+    <p><strong>Telegram Relay Bot + Broadcasting Tool:</strong> Custom logic for message forwarding between chats; anti-blocking solutions. Parallel version for advertising delivery.</p>
+    <p><strong>Telegram Bot Constructor with Admin Interface:</strong> Backend system allowing custom logic setup without code changes. <em><strong>Stack:</strong> FastAPI, SQLAdmin, PostgreSQL, Aiogram.</em></p>
+    <p><strong>Money Transfer Finder Bot</strong>: Telegram bot integrated with external data sources and notification system</p>
+    <p><strong>Automation Tools:</strong> Bash scripts, Selenium-based automations, proxy routing setup.</p>
+    <p><strong>PET PROJECTS:</strong> Chess analyzers with Stockfish | Card games logic and UI experiments | Small desktop apps built with Rust.</p>
+  </body>
+</html>
