@@ -25,3 +25,5 @@ dist-ssr
 
 # drafts/
 .vscode/
+
+/cv_pipeline/archive

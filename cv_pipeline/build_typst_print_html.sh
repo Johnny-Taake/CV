@@ -16,7 +16,7 @@ if [[ "${2:-}" != "" ]]; then
     output="$script_dir/$output"
   fi
 else
-  output="${input%.typ}.print.html"
+  output="${input%.typ}.html"
 fi
 
 stem="$(basename "${input%.typ}")"
