@@ -105,7 +105,7 @@ const sheets: Sheet[] = [
     title: 'Developer sheet',
     tone: 'Detailed software CV for backend, automation, startup and product engineering roles.',
     source: 'Generated from Typst',
-    path: '/cv_pipeline/Ivan Aleksandrovskii (Backend Developer).html',
+    path: 'cv_pipeline/Ivan Aleksandrovskii (Backend Developer).html',
     html: backendHtml,
   },
   {
@@ -113,7 +113,7 @@ const sheets: Sheet[] = [
     title: 'Hospitality sheet',
     tone: 'Detailed service, bar, sales and HoReCa operations CV for local or customer-facing roles.',
     source: 'Generated from Typst',
-    path: '/cv_pipeline/Ivan Aleksandrovskii (Bartender).html',
+    path: 'cv_pipeline/Ivan Aleksandrovskii (Bartender).html',
     html: bartenderHtml,
   },
 ]

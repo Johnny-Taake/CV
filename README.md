@@ -1,5 +1,25 @@
-# Vue 3 + TypeScript + Vite
+# CV GitHub Pages Site
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Static CV site built from Typst sources and a Vue/Vite shell.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Local Commands
+
+```bash
+bun install
+bun run build
+```
+
+`bun run build` does the full GitHub Pages build:
+
+1. finds every `.typ` file in `cv_pipeline`;
+2. compiles each source to standalone HTML and PDF;
+3. runs the Vite build, which bundles Vue/TypeScript/CSS imports into `dist`;
+4. copies direct-link CV HTML/PDF files into `dist/cv_pipeline`.
+
+For Typst-only regeneration:
+
+```bash
+bun run build:typst
+```
+
+The GitHub Pages workflow is in `.github/workflows/pages.yml` and deploys `dist`.

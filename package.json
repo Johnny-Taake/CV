@@ -3,9 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "packageManager": "bun@1.3.10",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "build": "bash scripts/build-pages.sh",
+    "build:app": "vue-tsc -b && vite build",
+    "build:typst": "bash scripts/build-pages.sh --typst-only",
     "preview": "vite preview"
   },
   "dependencies": {

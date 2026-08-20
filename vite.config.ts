@@ -4,6 +4,7 @@ import { allowedHosts } from './vite.allowed-hosts.ts'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: './',
   plugins: [vue()],
   server: {
     allowedHosts,
