@@ -111,18 +111,20 @@ sales, stock control, customer relations, and financial tracking.
 
 #emph[Results:]
 
-- Built and supported a distribution strategy for wholesale operations
+- Helped turn a young wholesale operation into a more structured sales
+  and stock routine after relocation to Thailand
 
-- Checked stock levels and demand patterns to keep inventory aligned
-  with active sales
+- Kept stock decisions connected to real demand, reducing guesswork
+  around what needed to move, reorder, or promote
 
-- Managed customer relations, active sales, marketing tasks, and quality
-  control
+- Supported repeat customer relationships by combining direct sales,
+  follow-up, product availability, and basic quality control
 
-- Prepared invoices and maintained an Excel-based cash register
+- Made daily money and paperwork easier to track through Excel cash
+  register routines and invoice preparation
 
-- Used sales data and market research to track performance and spot
-  practical improvements
+- Turned market checks and sales data into practical priorities for
+  outreach, stock focus, and product positioning
 
 #strong[Opening and Event Bar Manager Mar 2021 -- Sep 2022]
 
@@ -133,18 +135,20 @@ country club environment.
 
 #emph[Results:]
 
-- Managed bar operations for opening and event formats
+- Helped prepare the bar for opening and event service, turning a setup
+  phase into working shift routines
 
-- Developed beverage menu ideas and supported cocktail creation
+- Shaped beverage and cocktail ideas that could work in a country club
+  setting rather than only in a classic city bar format
 
-- Trained and coordinated bar staff during service preparation and
-  events
+- Made event shifts more predictable by aligning staff preparation,
+  stock readiness, and service responsibilities before guests arrived
 
-- Controlled inventory, compliance, service standards, and guest
-  experience
+- Protected guest experience during events by keeping inventory,
+  standards, compliance, and service timing under control
 
-- Coordinated bar workflow with event requirements and customer
-  expectations
+- Connected bar workflow with event requirements, so the bar supported
+  the whole event instead of becoming a bottleneck
 
 #strong[Bartender / Evening Shift Manager Feb 2021 -- Sep 2022]
 
@@ -155,37 +159,49 @@ cocktails, guest service, orders, and operational discipline.
 
 #emph[Results:]
 
-- Crafted IBA and signature alcoholic cocktails
+- Kept evening bar service stable while covering both bartender and
+  shift-lead responsibilities
 
-- Prepared non-alcoholic mixes and coffee after the barista shift
+- Expanded late-shift service coverage by handling cocktails,
+  non-alcoholic drinks, wine guidance, and coffee after the barista shift
 
-- Worked with wine recommendations and guest navigation through the wine
-  offer
+- Helped guests choose confidently from cocktails, wine, and food pairings,
+  supporting smoother orders and better check quality
 
-- Took orders, calculated bills, managed cash register operations, and
-  handled guest requests
+- Reduced friction at closing and handover by keeping orders, bills,
+  cash register work, requests, and stock checks organized
 
-- Checked inventory and supported smooth evening shift operations
+- Became a reliable person for evening pressure: guest requests, service
+  rhythm, operational details, and calm problem solving
 
 #strong[Bartender Aug 2019 -- Feb 2021]
 
 #strong[Wine and Water Restaurant, Hotel Indigo 5\*, Saint Petersburg]
 
-Worked across restaurant bar duties, night lobby bar service, and room
-service in a five-star hotel setting.
+Worked mainly through day, evening, and early-night peak service in a
+five-star hotel restaurant bar. During the COVID crisis, also stepped in
+for night lobby bar coverage, room service, and banquet preparation when
+the employer needed flexible support.
 
 #emph[Results:]
 
-- Prepared alcoholic cocktails, non-alcoholic mixes, wine service, and
-  coffee drinks for restaurant guests
+- Maintained five-star service consistency during the busiest day,
+  evening, and early-night restaurant bar hours
 
-- Covered lobby bar night shifts with room service responsibilities
+- Took on night lobby bar and room-service coverage when needed, without
+  losing order accuracy, tone, or hotel service standards
 
-- Took and calculated orders, managed cash register operations, and
-  delivered orders to rooms
+- Supported guest spend and satisfaction through confident wine,
+  cocktail, coffee, and food-adjacent drink guidance
 
-- Maintained inventory checks and service standards in both restaurant
-  and lobby bar formats
+- Supported banquet preparation during the COVID crisis, helping the
+  hotel cover changing service formats with limited resources
+
+- Balanced cash/register discipline, room delivery details, and inventory
+  checks while moving between restaurant, lobby, and event support tasks
+
+- Adapted between peak restaurant service and quieter lobby/room-service
+  interactions without changing the standard of attention
 
 #strong[Bartender Sep 2018 -- Jun 2019]
 
@@ -196,11 +212,14 @@ non-alcoholic mixes, coffee, and stock checks.
 
 #emph[Results:]
 
-- Crafted alcoholic cocktails and signature drinks
+- Built speed and consistency with IBA classics, signature drinks, and
+  non-alcoholic orders in a focused cocktail-bar environment
 
-- Prepared non-alcoholic mixes and coffee drinks
+- Kept drink quality steady across different order types instead of
+  treating coffee or non-alcoholic drinks as secondary service
 
-- Supported inventory assessments and clean shift handover
+- Supported cleaner shift handovers by keeping stock awareness and bar
+  readiness visible at the end of service
 
 #strong[Waiter Apr 2018 -- Jun 2018]
 
@@ -211,11 +230,14 @@ World Championship season.
 
 #emph[Results:]
 
-- Prepared for grand opening service under network standards
+- Adapted quickly to international brand standards during grand opening
+  preparation
 
-- Worked floor service during a high-traffic international event season
+- Handled floor service through a high-traffic World Championship season
+  with many international guests and fast table turnover
 
-- Followed brand service standards and team procedures
+- Learned how structured service procedures keep a large venue consistent
+  even when traffic and guest expectations spike
 
 #strong[Bartender May 2017 -- Mar 2018]
 
@@ -226,11 +248,13 @@ service, inventory discipline, and menu knowledge.
 
 #emph[Results:]
 
-- Guided guests through beer selection and menu options
+- Built the foundation of guest-facing bar work through beer guidance,
+  responsible service, and menu confidence
 
-- Served responsibly in a pub environment
+- Developed calm bar communication with regular guests and pub traffic
 
-- Supported inventory management and daily bar readiness
+- Learned daily bar readiness discipline: stock visibility, clean setup,
+  handover habits, and reliable shift presence
 
 #strong[#underline[EDUCATION]]
 

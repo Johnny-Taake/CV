@@ -1,144 +1,163 @@
 <script setup lang="ts">
-const contactLinks = [
+import { computed, nextTick, ref } from 'vue'
+import backendHtml from '../cv_pipeline/Ivan Aleksandrovskii (Backend Developer).html?raw'
+import bartenderHtml from '../cv_pipeline/Ivan Aleksandrovskii (Bartender).html?raw'
+
+type ContactLink = {
+  label: string
+  href: string
+  icon: string
+}
+
+type LifeStep = {
+  period: string
+  title: string
+  group: string
+  text: string
+}
+
+type Sheet = {
+  id: string
+  title: string
+  tone: string
+  source: string
+  path: string
+  html: string
+}
+
+const contactLinks: ContactLink[] = [
   { label: 'Telegram', href: 'https://t.me/Johnny_Taake', icon: 'fa-brands fa-telegram' },
+  { label: 'Line', href: 'https://line.me/ti/p/IzRK5OQuEO', icon: 'fa-brands fa-line' },
   { label: 'LinkedIn', href: 'http://linkedin.com/in/ivan-alexandrovsky', icon: 'fa-brands fa-linkedin' },
-  { label: 'GitHub', href: 'https://github.com/IvanAleksandrovskii', icon: 'fa-brands fa-github' },
+  { label: 'GitHub', href: 'https://github.com/Johnny-Taake', icon: 'fa-brands fa-github' },
   { label: 'Email', href: 'mailto:ivan.aleksandrovskii@gmail.com', icon: 'fa-solid fa-envelope' },
 ]
 
 const quickFacts = [
   'Bangkok, Thailand (UTC+7)',
   'Russian native, English C1, Thai basic, German basic',
-  'Car and motorcycle driving licences',
-  'Open to service, operations, technical and developer roles',
+  'Python / Rust / backend systems, automation and product delivery',
+  'Hospitality, operations, mobility and customer-facing background',
 ]
 
-const coreCompetencies = [
-  'Customer communication and service quality',
-  'Problem solving under pressure',
-  'Technical troubleshooting and documentation',
-  'Workflow organization and process improvement',
-  'Fast learning and adaptability',
-  'Safety awareness, driving and field mobility',
-]
-
-const workHistory = [
+const lifePath: LifeStep[] = [
   {
-    role: 'Full-stack Engineer',
-    company: 'Freelance / Self-Employed',
-    period: 'Sep 2025 - Present',
-    points: [
-      'Developed backend components for web applications and internal tools.',
-      'Set up automation workflows, environments, databases and deployment infrastructure.',
-      'Integrated AI-related features and practical LLM-assisted workflows.',
-    ],
+    period: '2016 - 2020',
+    title: 'Engineering foundation',
+    group: 'Education and technical base',
+    text: 'Radio engineering, physics, C++, algorithms and a practical habit of learning technical systems from the inside.',
   },
   {
-    role: 'Backend Developer',
-    company: 'Atlantis',
-    period: 'Feb 2025 - Aug 2025',
-    points: [
-      'Built backend services in Rust and Python for HealthTech, FinTech and internal developer tooling.',
-      'Developed gRPC APIs and translated Figma designs into backend logic and data models.',
-      'Troubleshot, upgraded and documented backend microservices in a remote team.',
-    ],
+    period: '2017 - 2023',
+    title: 'Service and operations',
+    group: 'Bars, hotel, events, distribution',
+    text: 'Guest communication, bar shifts, inventory, cash discipline, sales, event service and pressure-handling in real operating environments.',
   },
   {
-    role: 'Python Backend Developer',
-    company: 'CHRONA AI / CHRONA AGENCY',
-    period: 'Feb 2024 - Jun 2025',
-    points: [
-      'Built HR, recruitment automation, onboarding and Telegram-based products.',
-      'Designed Telegram Mini Apps, bots, admin panels and FastAPI services with PostgreSQL.',
-      'Handled Docker deployment, VPS setup, OpenAI and HuggingFace integrations.',
-    ],
+    period: '2021 - 2023',
+    title: 'Automation bridge',
+    group: 'Python scripts and workflow tools',
+    text: 'Moved from manual operations into Python automation, structured data handling, Excel tooling and recruiting/business workflow support.',
   },
   {
-    role: 'Python Automation Developer',
-    company: 'NDA Trading Project / Alber Blanc',
-    period: 'Sep 2021 - Sep 2023',
-    points: [
-      'Automated business operations, sales support, recruiting workflows and structured data handling.',
-      'Built Python and Excel-based tools that reduced manual operational work.',
-    ],
+    period: '2024 - 2025',
+    title: 'Product backend and systems depth',
+    group: 'CHRONA AI / CHRONA AGENCY / Atlantis',
+    text: 'Worked with the same core team across HRTech, HealthTech, FinTech, Telegram products, internal tools, FastAPI services, Rust/Python backend systems, gRPC and AI-assisted product flows.',
+  },
+  {
+    period: '2025 - now',
+    title: 'Independent practice',
+    group: 'Freelance, learning and applied projects',
+    text: 'Combining backend, web, automation, AI workflows, mentoring and deeper engineering practice around systems that can actually ship.',
   },
 ]
 
-const developerStack = [
-  'Python',
-  'Rust',
-  'FastAPI',
-  'Django',
-  'PostgreSQL',
-  'SQLAlchemy',
-  'Alembic',
-  'Docker',
-  'React',
-  'TypeScript',
-  'gRPC',
-  'Protobuf',
-  'Linux',
-  'Telegram Bots',
-  'OpenAI API',
-]
-
-const developerProjects = [
-  'Medical diabetes monitoring platform: backend and documentation for patient metrics and doctor analytics. Stack: Rust, Diesel, PostgreSQL, gRPC.',
-  'Psychological testing platform: Telegram Mini App and admin panel for tests directly in chat. Stack: FastAPI, PostgreSQL, Aiogram, React, Docker.',
-  'Telegram relay, broadcasting and bot-constructor tools for message routing, anti-blocking logic and no-code admin configuration.',
-  'Pet projects: chess analyzers with Stockfish, card game logic, UI experiments and small Rust desktop apps.',
-]
-
-const serviceStrengths = [
-  '7 years of customer-facing hospitality experience.',
-  'Bar, service, sales and front-of-house communication in fast-paced environments.',
-  'Conflict resolution, calm tone under pressure and responsibility for guest experience.',
-  'Shift discipline, stock awareness, product turnover and day-to-day service operations.',
-  'Comfortable with multicultural guests, Russian-speaking and English-speaking customers.',
-  'Technical mindset useful for POS, booking, inventory and operational systems.',
-]
-
-const operationsStrengths = [
-  'Warehouse and stock-aware work: product movement, order accuracy, tool discipline and practical process control.',
-  'Factory and operational environments: attention to safety, repeated procedures, pace and reliability.',
-  'Repair and equipment troubleshooting: isolate issues, test assumptions, find a working fix and document what changed.',
-  'Driving and mobility: car and motorcycle licences, scooter and manual motorcycle experience, urban and long-distance riding.',
-  'Infrastructure mindset: Linux, VPS, Docker, networking basics, deployment, debugging and monitoring awareness.',
-]
-
-const education = [
+const directionCards = [
   {
-    title: 'Saint Petersburg State University of Aerospace Instrumentation (SUAI)',
-    meta: 'Institute of Radio Engineering and Infocommunication Technologies | 2016 - 2020',
-    text: "Incomplete Bachelor's degree. Studied radio engineering, infocommunication technologies and technical systems.",
+    title: 'Software engineering',
+    text: 'Backend systems, APIs, PostgreSQL, FastAPI, Rust, gRPC, Docker, internal tools, Telegram products and AI integrations.',
   },
   {
-    title: 'Saint Petersburg State University of Telecommunications (SPbSUT), Specialized Lyceum',
-    meta: 'Physics and Information Technologies | 2016',
-    text: 'Studied physics, information technologies, C++ and algorithms.',
+    title: 'Service and communication',
+    text: 'Seven years around hospitality, guests, sales, bar operations, team rhythm and high-load customer-facing environments.',
+  },
+  {
+    title: 'Operations and mobility',
+    text: 'Stock-aware work, order discipline, troubleshooting mindset, driving licences, scooters, motorcycles and field-ready practicality.',
+  },
+  {
+    title: 'Learning curve',
+    text: 'A path shaped by self-study, fast adaptation, multicultural work, technical curiosity and responsibility for outcomes.',
   },
 ]
 
-function printPage() {
+const stackGroups = [
+  ['Python', 'FastAPI', 'PostgreSQL', 'Docker', 'SQLAlchemy', 'Alembic'],
+  ['Rust', 'gRPC', 'Protobuf', 'Tokio', 'Axum', 'Diesel'],
+  ['React', 'Vue', 'TypeScript', 'Telegram Mini Apps', 'Aiogram'],
+  ['OpenAI API', 'HuggingFace', 'Selenium', 'Linux', 'Nginx', 'VPS'],
+]
+
+const sheets: Sheet[] = [
+  {
+    id: 'developer-sheet',
+    title: 'Developer sheet',
+    tone: 'Detailed software CV for backend, automation, startup and product engineering roles.',
+    source: 'Generated from Typst',
+    path: '/cv_pipeline/Ivan Aleksandrovskii (Backend Developer).html',
+    html: backendHtml,
+  },
+  {
+    id: 'bartender-sheet',
+    title: 'Hospitality sheet',
+    tone: 'Detailed service, bar, sales and HoReCa operations CV for local or customer-facing roles.',
+    source: 'Generated from Typst',
+    path: '/cv_pipeline/Ivan Aleksandrovskii (Bartender).html',
+    html: bartenderHtml,
+  },
+]
+
+const activeSheetId = ref<string | null>(null)
+const activeSheet = computed(() => sheets.find((sheet) => sheet.id === activeSheetId.value) ?? null)
+
+function extractBody(html: string) {
+  const match = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i)
+  return match?.[1]?.trim() ?? html
+}
+
+function stripScreenRepeatedHeader(html: string) {
+  return extractBody(html)
+    .replace(/<section class="contact-card"[\s\S]*?<\/section>/i, '')
+    .trim()
+}
+
+function openSheet(sheetId: string) {
+  activeSheetId.value = sheetId
+  nextTick(() => {
+    document.getElementById(sheetId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  })
+}
+
+async function printSheet(sheetId: string) {
+  activeSheetId.value = sheetId
+  await nextTick()
   window.print()
 }
 </script>
 
 <template>
   <article class="cv-shell">
-    <aside class="sidebar" aria-label="Profile summary">
+    <aside class="sidebar" aria-label="Profile navigation">
       <div class="monogram" aria-hidden="true">IA</div>
 
       <section class="identity">
         <p class="eyebrow">CV package</p>
         <h1 class="name">Ivan Aleksandrovskii</h1>
-        <!-- TODO: Edit - too complex and not including sales and service -->
-        <p class="role">Versatile Technical Professional</p>
+        <p class="role">life path / technical profile</p>
       </section>
 
       <section>
-        <!-- TODO: Edit style (make contacts use more than 1 line if
-              possible and if enough width show 3 in a row) & add Line -->
         <h2>Contact</h2>
         <ul class="contact-list">
           <li v-for="link in contactLinks" :key="link.label">
@@ -151,157 +170,123 @@ function printPage() {
       </section>
 
       <section>
+        <h2>Sheets</h2>
+        <nav class="resume-nav" aria-label="Generated CV sheets">
+          <a href="#life-path">Life path</a>
+          <a
+            v-for="sheet in sheets"
+            :key="sheet.id"
+            :href="`#${sheet.id}`"
+            :aria-current="activeSheetId === sheet.id ? 'page' : undefined"
+            @click.prevent="openSheet(sheet.id)"
+          >
+            {{ sheet.title }}
+          </a>
+        </nav>
+      </section>
+
+      <section>
         <h2>Quick facts</h2>
         <ul class="plain-list compact">
           <li v-for="fact in quickFacts" :key="fact">{{ fact }}</li>
         </ul>
       </section>
-
-      <section>
-        <h2>Resume versions</h2>
-        <nav class="resume-nav" aria-label="Resume versions">
-          <a href="#general">General CV</a>
-          <a href="#developer">Developer CV</a>
-          <a href="#service">Service / Bar / Sales</a>
-          <a href="#operations">Operations / Repair</a>
-        </nav>
-      </section>
     </aside>
 
     <main class="main">
-      <header class="hero">
-        <div>
-          <p class="kicker">Based on ResumeV2 / General CV + Developer Appendix</p>
+      <section id="life-path" class="resume-section lead-section overview-card">
+        <div class="hero">
+          <div>
+            <p class="kicker">General CV</p>
+            <h2>Engineer with service, operations and product experience</h2>
+          </div>
           <p class="summary">
-            Broad CV page for roles where service, operations, technical thinking and software
-            development can support each other. The attached versions below can be printed or copied
-            as separate resumes depending on the target company.
+            My path combines hospitality and customer-facing work, Python automation, backend
+            engineering, startup product delivery, Rust systems work and independent technical
+            practice. This page is intentionally broad: it introduces the person and the trajectory;
+            the generated sheets below carry the role-specific detail.
           </p>
         </div>
-        <button type="button" class="print-button" @click="printPage">
-          <i class="fa-solid fa-print" aria-hidden="true"></i>
-          Print
-        </button>
-      </header>
 
-      <section id="general" class="resume-section lead-section">
-        <div class="section-head">
-          <p class="section-number">01</p>
-          <h2>General CV</h2>
-        </div>
-        <div class="two-column">
-          <div>
-            <h3>Profile</h3>
-            <p>
-              Versatile professional with experience across software development, automation,
-              hospitality, customer communication, technical troubleshooting and driving. Comfortable
-              in dynamic environments where fast learning, responsibility, calm communication and
-              practical problem solving matter every day.
-            </p>
-            <p>
-              Based in Bangkok with family and open to roles where technical thinking, customer-facing
-              confidence, mobility and reliability are useful in day-to-day work.
-            </p>
-          </div>
-          <div>
-            <h3>Core competencies</h3>
-            <ul class="tag-list">
-              <li v-for="item in coreCompetencies" :key="item">{{ item }}</li>
-            </ul>
-          </div>
+        <div class="direction-grid" aria-label="Profile directions">
+          <article v-for="card in directionCards" :key="card.title">
+            <h3>{{ card.title }}</h3>
+            <p>{{ card.text }}</p>
+          </article>
         </div>
 
-        <div class="timeline-block">
-          <h3>Work history</h3>
+        <section class="timeline-block" aria-label="Life path graph">
+          <div class="section-head">
+            <p class="section-number">01</p>
+            <h2>Life path</h2>
+          </div>
           <ol class="timeline">
-            <li v-for="job in workHistory" :key="`${job.role}-${job.company}`" class="timeline-item">
-              <h4>{{ job.role }}</h4>
-              <p class="meta">{{ job.company }} / {{ job.period }}</p>
-              <ul>
-                <li v-for="point in job.points" :key="point">{{ point }}</li>
-              </ul>
+            <li
+              v-for="step in lifePath"
+              :key="`${step.period}-${step.title}`"
+              class="timeline-item path-node"
+            >
+              <p class="path-period">{{ step.period }}</p>
+              <h3>{{ step.title }}</h3>
+              <p class="meta">{{ step.group }}</p>
+              <p>{{ step.text }}</p>
             </li>
           </ol>
-        </div>
+        </section>
+
+        <section class="stack-strip" aria-label="Technical and practical stack">
+          <div v-for="group in stackGroups" :key="group.join('-')" class="stack-group">
+            <span v-for="item in group" :key="item">{{ item }}</span>
+          </div>
+        </section>
       </section>
 
-      <section id="developer" class="resume-section accent-section">
-        <div class="section-head">
-          <p class="section-number">02</p>
-          <h2>Developer Resume</h2>
+      <section class="sheet-deck" aria-label="Generated Typst sheets">
+        <div class="sheet-note">
+          <p class="kicker">Generated sheets</p>
+          <p>
+            Open one sheet here, then use Print / Save to print it or save it as PDF from the
+            browser print dialog.
+          </p>
         </div>
-        <p class="section-intro">
-          Backend-focused full-stack developer profile for Python, Rust, PostgreSQL, FastAPI, Docker,
-          gRPC, Telegram products, automation and AI integrations.
-        </p>
-        <div class="two-column">
-          <div>
-            <h3>Core stack</h3>
-            <ul class="pill-list">
-              <li v-for="item in developerStack" :key="item">{{ item }}</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Selected projects</h3>
-            <ul class="plain-list">
-              <li v-for="project in developerProjects" :key="project">{{ project }}</li>
-            </ul>
-          </div>
+
+        <div class="sheet-link-grid">
+          <article v-for="sheet in sheets" :key="`link-${sheet.id}`" class="sheet-link-card">
+            <div>
+              <p class="kicker">{{ sheet.source }}</p>
+              <h3>{{ sheet.title }}</h3>
+              <p>{{ sheet.tone }}</p>
+            </div>
+            <div class="sheet-actions">
+              <button type="button" class="open-sheet" @click="openSheet(sheet.id)">Open</button>
+              <a class="open-sheet muted-action" :href="sheet.path" target="_blank" rel="noreferrer">
+                New tab
+              </a>
+            </div>
+          </article>
         </div>
+
+        <article v-if="activeSheet" :id="activeSheet.id" class="sheet-panel">
+          <header class="sheet-panel-head">
+            <div>
+              <p class="kicker">{{ activeSheet.source }}</p>
+              <h2>{{ activeSheet.title }}</h2>
+              <p>{{ activeSheet.tone }}</p>
+            </div>
+            <button type="button" class="open-sheet print-save-button" @click="printSheet(activeSheet.id)">
+              <i class="fa-solid fa-print" aria-hidden="true"></i>
+              <span aria-hidden="true">/</span>
+              <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>
+              <span>Print / Save</span>
+            </button>
+          </header>
+
+          <div class="typst-sheet screen-sheet" v-html="stripScreenRepeatedHeader(activeSheet.html)"></div>
+        </article>
       </section>
 
-      <section id="service" class="resume-section">
-        <div class="section-head">
-          <p class="section-number">03</p>
-          <h2>Service, Bar and Sales Resume</h2>
-        </div>
-        <p class="section-intro">
-          Use this version for bars, hospitality, retail, venue operations, customer service and
-          sales-adjacent roles where communication, discipline and pressure handling are more important
-          than a narrow software profile.
-        </p>
-        <ul class="feature-grid">
-          <li v-for="item in serviceStrengths" :key="item">{{ item }}</li>
-        </ul>
-      </section>
-
-      <section id="operations" class="resume-section">
-        <div class="section-head">
-          <p class="section-number">04</p>
-          <h2>Factory, Warehouse and Repair Resume</h2>
-        </div>
-        <p class="section-intro">
-          Use this version for warehouse, factory, technical assistant, field support, driver,
-          repair-adjacent and infrastructure-support roles.
-        </p>
-        <ul class="feature-grid">
-          <li v-for="item in operationsStrengths" :key="item">{{ item }}</li>
-        </ul>
-      </section>
-
-      <section class="resume-section education-section">
-        <div class="section-head">
-          <p class="section-number">05</p>
-          <h2>Education and Languages</h2>
-        </div>
-        <div class="two-column">
-          <div>
-            <article v-for="item in education" :key="item.title" class="education-item">
-              <h3>{{ item.title }}</h3>
-              <p class="meta">{{ item.meta }}</p>
-              <p>{{ item.text }}</p>
-            </article>
-          </div>
-          <div>
-            <h3>Languages</h3>
-            <ul class="pill-list">
-              <li>Russian: Native</li>
-              <li>English: C1</li>
-              <li>Thai: Basic / learning</li>
-              <li>German: Basic</li>
-            </ul>
-          </div>
-        </div>
+      <section v-if="activeSheet" class="print-docs" aria-label="Printable generated sheet">
+        <article class="typst-sheet print-sheet" v-html="extractBody(activeSheet.html)"></article>
       </section>
     </main>
   </article>

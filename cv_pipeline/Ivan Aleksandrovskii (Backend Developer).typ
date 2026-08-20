@@ -130,47 +130,21 @@ depth through hands-on work.
 - Used this period to deepen engineering practice through independent
   project work and targeted upskilling
 
-#strong[Backend Developer Feb 2025 -- Aug 2025]
+#strong[Backend / Full-stack Developer Feb 2024 - Aug 2025]
 
-#strong[Atlantis (remote)]
+#strong[CHRONA AI / CHRONA AGENCY / Atlantis (remote)]
 
-The team was building internal engineering products and client solutions
-for automating developer workflows, including projects in HealthTech and
-FinTech. Contributed to backend development for a diabetes monitoring
-platform focused on patient metrics tracking and doctor--patient
-communication, as well as to internal developer tooling.
+Worked with the same core team under CHRONA AI / CHRONA AGENCY and later
+Atlantis, contributing to HRTech, HealthTech, FinTech, internal tooling,
+and developer workflow automation products. Started in an early-stage
+startup environment and gradually took on backend architecture, product
+implementation, API integrations, deployment, documentation, and
+cross-functional delivery responsibilities.
 
-Worked in a remote engineering team with asynchronous collaboration,
-product iteration, and cross-functional coordination.
-
-#emph[Results:]
-
-- Designed and maintained backend services in Rust and Python
-
-- Developed APIs using gRPC
-
-- Translated Figma-based product designs into backend logic, data
-  models, and technical documentation
-
-- Troubleshot, debugged, and upgraded backend microservices
-
-- Built internal tools in TypeScript and RPC-generation utilities in
-  Rust
-
-- Applied Domain-Driven Design principles in backend implementation
-
-#strong[Python Backend Developer Feb 2024 - Jun 2025]
-
-#strong[CHRONA AI / CHRONA AGENCY (remote)]
-
-Joined the startup at an early stage and gradually took on backend
-architecture and product implementation responsibilities. Worked on HR
-and recruitment automation tools, onboarding systems, and Telegram-based
-applications. Contributed across the full development cycle: backend
-logic, architecture design, API integrations, deployment, and
-collaboration with frontend, design, and product stakeholders. Worked in
-a fast-moving startup environment with evolving requirements, MVP-first
-delivery, and a high degree of autonomy.
+Built Telegram-based products, backend services, AI integrations, and
+internal engineering tools in a remote team with evolving requirements,
+MVP-first delivery, asynchronous collaboration, and a high degree of
+autonomy.
 
 #emph[Results:]
 
@@ -186,6 +160,20 @@ delivery, and a high degree of autonomy.
 - Managed Docker-based containerization and VPS deployment
 
 - Integrated AI solutions using OpenAI and HuggingFace models
+
+- Designed and maintained backend services in Rust and Python
+
+- Developed APIs using gRPC
+
+- Translated Figma-based product designs into backend logic, data
+  models, and technical documentation
+
+- Troubleshot, debugged, and upgraded backend microservices
+
+- Built internal tools in TypeScript and RPC-generation utilities in
+  Rust
+
+- Applied Domain-Driven Design principles in backend implementation
 
 - Interpreted product prototypes and translated them into backend
   structure and logic
