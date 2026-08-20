@@ -48,6 +48,8 @@ theme = json.loads(theme_path.read_text(encoding="utf-8"))
 tokens = theme["tokens"]
 typography = theme["typography"]
 typst = theme["typst"]
+alpha = theme["alpha"]
+web_layout = theme["webLayout"]
 
 paper = tokens["paper"]
 surface = tokens["surface"]
@@ -61,6 +63,17 @@ fallback_body = typography.get("fallbackBody", "Arial")
 page_size = typst.get("pageSize", "letter")
 page_margin = typst.get("pageMargin", "0.7in")
 body_size = typst.get("bodySize", "10pt")
+
+def hex_to_rgb_channels(hex_color):
+    normalized = hex_color.lstrip("#")
+    if len(normalized) == 3:
+        normalized = "".join(char * 2 for char in normalized)
+    if len(normalized) != 6:
+        raise SystemExit(f"Unsupported color format: {hex_color}")
+    return " ".join(str(int(normalized[index:index + 2], 16)) for index in (0, 2, 4))
+
+ink_rgb = hex_to_rgb_channels(ink)
+accent_rgb = hex_to_rgb_channels(accent)
 
 profiles = {
     "Ivan Aleksandrovskii (Backend Developer)": {
@@ -135,8 +148,21 @@ style = f"""    <title>{escape(profile["title"])}</title>
     <link rel="icon" type="image/svg+xml" href="{favicon_href}">
     <style>
       :root {{
-        color: {ink};
-        background: {ink};
+        --paper: {paper};
+        --surface: {surface};
+        --ink: {ink};
+        --ink-soft: {ink_soft};
+        --muted: {muted};
+        --border: {border};
+        --accent: {accent};
+        --accent-surface: {tokens["accentSurface"]};
+        --ink-rgb: {ink_rgb};
+        --accent-rgb: {accent_rgb};
+        --print-page-shadow: {web_layout["shellShadow"]} rgb(var(--ink-rgb) / {alpha["printPageShadow"]});
+        --contact-card-shadow: {web_layout["contactShadow"]} rgb(var(--accent-rgb) / {alpha["contactShadow"]});
+
+        color: var(--ink);
+        background: var(--ink);
         font-family: "{body_font}", "{fallback_body}", Arial, sans-serif;
         font-size: {body_size};
         line-height: 1.45;
@@ -150,16 +176,16 @@ style = f"""    <title>{escape(profile["title"])}</title>
         max-width: 8.5in;
         margin: 0.42in auto;
         padding: {page_margin};
-        color: {ink};
-        background: {paper};
-        border: 1px solid {border};
+        color: var(--ink);
+        background: var(--paper);
+        border: 1px solid var(--border);
         border-radius: 6px;
-        box-shadow: 0 24px 80px rgb(11 11 15 / 24%);
+        box-shadow: var(--print-page-shadow);
       }}
 
       a {{
-        color: {accent};
-        text-decoration-color: {accent};
+        color: var(--accent);
+        text-decoration-color: var(--accent);
         text-underline-offset: 2px;
         transition:
           background-color 0.18s ease,
@@ -168,8 +194,8 @@ style = f"""    <title>{escape(profile["title"])}</title>
       }}
 
       a:hover {{
-        color: {paper};
-        background: {accent};
+        color: var(--paper);
+        background: var(--accent);
         text-decoration-color: transparent;
       }}
 
@@ -188,7 +214,7 @@ style = f"""    <title>{escape(profile["title"])}</title>
 
       body > p:first-of-type {{
         margin-bottom: 0.15em;
-        color: {accent};
+        color: var(--accent);
         font-size: 24pt;
         line-height: 1.05;
         text-align: center;
@@ -200,15 +226,15 @@ style = f"""    <title>{escape(profile["title"])}</title>
 
       body > p:nth-of-type(2) {{
         margin-bottom: 0.38em;
-        color: {ink_soft};
+        color: var(--ink-soft);
       }}
 
       .lead-summary {{
         margin: 0.75em 0 0.68em;
         padding: 0.12in 0.16in;
-        border-left: 3pt solid {accent};
-        background: {tokens["accentSurface"]};
-        color: {ink_soft};
+        border-left: 3pt solid var(--accent);
+        background: var(--accent-surface);
+        color: var(--ink-soft);
         font-size: 10.5pt;
         line-height: 1.5;
         text-align: left;
@@ -219,8 +245,8 @@ style = f"""    <title>{escape(profile["title"])}</title>
       .contact-card {{
         margin: 0.35em 0 1.05em;
         padding: 0.14in;
-        border: 0.5pt solid {border};
-        background: {paper};
+        border: 0.5pt solid var(--border);
+        background: var(--paper);
         break-inside: avoid;
         transition:
           border-color 0.18s ease,
@@ -230,7 +256,7 @@ style = f"""    <title>{escape(profile["title"])}</title>
 
       .contact-card h2 {{
         margin: 0 0 0.1in;
-        color: {accent};
+        color: var(--accent);
         font-size: 10pt;
         line-height: 1.2;
         letter-spacing: 0.08em;
@@ -238,8 +264,8 @@ style = f"""    <title>{escape(profile["title"])}</title>
       }}
 
       .contact-card:hover {{
-        border-color: {accent};
-        box-shadow: 0 10px 34px rgb(201 0 43 / 10%);
+        border-color: var(--accent);
+        box-shadow: var(--contact-card-shadow);
         transform: translateY(-1px);
       }}
 
@@ -259,7 +285,7 @@ style = f"""    <title>{escape(profile["title"])}</title>
       }}
 
       .contact-card dt {{
-        color: {muted};
+        color: var(--muted);
         font-weight: 700;
       }}
 
@@ -272,8 +298,8 @@ style = f"""    <title>{escape(profile["title"])}</title>
         margin-top: 1.2em;
         margin-bottom: 0.55em;
         padding-bottom: 0.16in;
-        border-bottom: 0.5pt solid {border};
-        color: {accent};
+        border-bottom: 0.5pt solid var(--border);
+        color: var(--accent);
         font-size: 13pt;
         line-height: 1.2;
         text-transform: uppercase;
@@ -283,7 +309,7 @@ style = f"""    <title>{escape(profile["title"])}</title>
       }}
 
       p:has(> strong > span[style*="underline"]):hover {{
-        border-color: {accent};
+        border-color: var(--accent);
       }}
 
       @media screen and (max-width: 760px) {{
@@ -307,7 +333,7 @@ style = f"""    <title>{escape(profile["title"])}</title>
       @media print {{
         :root,
         body {{
-          background: {surface};
+          background: var(--surface);
         }}
 
         body {{
@@ -320,18 +346,18 @@ style = f"""    <title>{escape(profile["title"])}</title>
         }}
 
         a {{
-          color: {accent};
+          color: var(--accent);
         }}
 
         .contact-card {{
-          background: {surface};
+          background: var(--surface);
           transition: none;
           transform: none;
           box-shadow: none;
         }}
 
         .lead-summary {{
-          background: {surface};
+          background: var(--surface);
         }}
       }}
     </style>"""

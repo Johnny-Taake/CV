@@ -13,8 +13,21 @@ Notes: Typst HTML export is experimental; this wrapper adds browser print CSS fr
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%0A%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%23fffaf7%22%2F%3E%0A%3Cpath%20d%3D%22M25%2020%2013%2032l12%2012M39%2020l12%2012-12%2012%22%20fill%3D%22none%22%20stroke%3D%22%23c9002b%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M35%2016%2029%2048%22%20stroke%3D%22%230b0b0f%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3C%2Fsvg%3E">
     <style>
       :root {
-        color: #0b0b0f;
-        background: #0b0b0f;
+        --paper: #fffaf7;
+        --surface: #ffffff;
+        --ink: #0b0b0f;
+        --ink-soft: #2a2529;
+        --muted: #6f6368;
+        --border: #eadfe3;
+        --accent: #c9002b;
+        --accent-surface: #fff1f6;
+        --ink-rgb: 11 11 15;
+        --accent-rgb: 201 0 43;
+        --print-page-shadow: 0 24px 80px rgb(var(--ink-rgb) / 24%);
+        --contact-card-shadow: 0 10px 34px rgb(var(--accent-rgb) / 10%);
+
+        color: var(--ink);
+        background: var(--ink);
         font-family: "Inter", "Segoe UI", Arial, sans-serif;
         font-size: 10pt;
         line-height: 1.45;
@@ -28,16 +41,16 @@ Notes: Typst HTML export is experimental; this wrapper adds browser print CSS fr
         max-width: 8.5in;
         margin: 0.42in auto;
         padding: 0.7in;
-        color: #0b0b0f;
-        background: #fffaf7;
-        border: 1px solid #eadfe3;
+        color: var(--ink);
+        background: var(--paper);
+        border: 1px solid var(--border);
         border-radius: 6px;
-        box-shadow: 0 24px 80px rgb(11 11 15 / 24%);
+        box-shadow: var(--print-page-shadow);
       }
 
       a {
-        color: #c9002b;
-        text-decoration-color: #c9002b;
+        color: var(--accent);
+        text-decoration-color: var(--accent);
         text-underline-offset: 2px;
         transition:
           background-color 0.18s ease,
@@ -46,8 +59,8 @@ Notes: Typst HTML export is experimental; this wrapper adds browser print CSS fr
       }
 
       a:hover {
-        color: #fffaf7;
-        background: #c9002b;
+        color: var(--paper);
+        background: var(--accent);
         text-decoration-color: transparent;
       }
 
@@ -66,7 +79,7 @@ Notes: Typst HTML export is experimental; this wrapper adds browser print CSS fr
 
       body > p:first-of-type {
         margin-bottom: 0.15em;
-        color: #c9002b;
+        color: var(--accent);
         font-size: 24pt;
         line-height: 1.05;
         text-align: center;
@@ -78,15 +91,15 @@ Notes: Typst HTML export is experimental; this wrapper adds browser print CSS fr
 
       body > p:nth-of-type(2) {
         margin-bottom: 0.38em;
-        color: #2a2529;
+        color: var(--ink-soft);
       }
 
       .lead-summary {
         margin: 0.75em 0 0.68em;
         padding: 0.12in 0.16in;
-        border-left: 3pt solid #c9002b;
-        background: #fff1f6;
-        color: #2a2529;
+        border-left: 3pt solid var(--accent);
+        background: var(--accent-surface);
+        color: var(--ink-soft);
         font-size: 10.5pt;
         line-height: 1.5;
         text-align: left;
@@ -97,8 +110,8 @@ Notes: Typst HTML export is experimental; this wrapper adds browser print CSS fr
       .contact-card {
         margin: 0.35em 0 1.05em;
         padding: 0.14in;
-        border: 0.5pt solid #eadfe3;
-        background: #fffaf7;
+        border: 0.5pt solid var(--border);
+        background: var(--paper);
         break-inside: avoid;
         transition:
           border-color 0.18s ease,
@@ -108,7 +121,7 @@ Notes: Typst HTML export is experimental; this wrapper adds browser print CSS fr
 
       .contact-card h2 {
         margin: 0 0 0.1in;
-        color: #c9002b;
+        color: var(--accent);
         font-size: 10pt;
         line-height: 1.2;
         letter-spacing: 0.08em;
@@ -116,8 +129,8 @@ Notes: Typst HTML export is experimental; this wrapper adds browser print CSS fr
       }
 
       .contact-card:hover {
-        border-color: #c9002b;
-        box-shadow: 0 10px 34px rgb(201 0 43 / 10%);
+        border-color: var(--accent);
+        box-shadow: var(--contact-card-shadow);
         transform: translateY(-1px);
       }
 
@@ -137,7 +150,7 @@ Notes: Typst HTML export is experimental; this wrapper adds browser print CSS fr
       }
 
       .contact-card dt {
-        color: #6f6368;
+        color: var(--muted);
         font-weight: 700;
       }
 
@@ -150,8 +163,8 @@ Notes: Typst HTML export is experimental; this wrapper adds browser print CSS fr
         margin-top: 1.2em;
         margin-bottom: 0.55em;
         padding-bottom: 0.16in;
-        border-bottom: 0.5pt solid #eadfe3;
-        color: #c9002b;
+        border-bottom: 0.5pt solid var(--border);
+        color: var(--accent);
         font-size: 13pt;
         line-height: 1.2;
         text-transform: uppercase;
@@ -161,7 +174,7 @@ Notes: Typst HTML export is experimental; this wrapper adds browser print CSS fr
       }
 
       p:has(> strong > span[style*="underline"]):hover {
-        border-color: #c9002b;
+        border-color: var(--accent);
       }
 
       @media screen and (max-width: 760px) {
@@ -185,7 +198,7 @@ Notes: Typst HTML export is experimental; this wrapper adds browser print CSS fr
       @media print {
         :root,
         body {
-          background: #ffffff;
+          background: var(--surface);
         }
 
         body {
@@ -198,18 +211,18 @@ Notes: Typst HTML export is experimental; this wrapper adds browser print CSS fr
         }
 
         a {
-          color: #c9002b;
+          color: var(--accent);
         }
 
         .contact-card {
-          background: #ffffff;
+          background: var(--surface);
           transition: none;
           transform: none;
           box-shadow: none;
         }
 
         .lead-summary {
-          background: #ffffff;
+          background: var(--surface);
         }
       }
     </style>

@@ -11,16 +11,17 @@
     "accentSoft": "#f7b7cc",
     "accentSurface": "#fff1f6"
   },
-  "cssVariables": {
-    "bg": "#fffaf7",
-    "surface": "#ffffff",
-    "ink": "#0b0b0f",
-    "inkSoft": "#2a2529",
-    "muted": "#6f6368",
-    "border": "#eadfe3",
-    "red": "#c9002b",
-    "pink": "#f7b7cc",
-    "pinkSoft": "#fff1f6"
+  "alpha": {
+    "transparent": "0%",
+    "paperBorder": "28%",
+    "sidebarText": "84%",
+    "sidebarNav": "86%",
+    "mainWash": "76%",
+    "accentPulse": "38%",
+    "accentSoftPulse": "42%",
+    "shellShadow": "12%",
+    "printPageShadow": "24%",
+    "contactShadow": "10%"
   },
   "typography": {
     "display": "Georgia",
@@ -32,7 +33,9 @@
     "shellMaxWidth": "1220px",
     "shellGutter": "20px",
     "sidebarWidth": "330px",
-    "shadow": "0 24px 80px rgb(11 11 15 / 12%)"
+    "shellShadow": "0 24px 80px",
+    "hoverRingSize": "8px",
+    "contactShadow": "0 10px 34px"
   },
   "typst": {
     "pageSize": "us-letter",

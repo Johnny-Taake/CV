@@ -39,21 +39,21 @@ body {
 
 @keyframes hover-breath {
   from {
-    box-shadow: 0 0 0 0 rgb(var(--accent-rgb) / 38%);
+    box-shadow: var(--hover-accent-shadow-start);
   }
 
   to {
-    box-shadow: 0 0 0 8px rgb(var(--accent-rgb) / 0%);
+    box-shadow: var(--hover-accent-shadow-end);
   }
 }
 
 @keyframes hover-breath-light {
   from {
-    box-shadow: 0 0 0 0 rgb(var(--accent-soft-rgb) / 42%);
+    box-shadow: var(--hover-accent-soft-shadow-start);
   }
 
   to {
-    box-shadow: 0 0 0 8px rgb(var(--accent-soft-rgb) / 0%);
+    box-shadow: var(--hover-accent-soft-shadow-end);
   }
 }
 
@@ -132,7 +132,7 @@ button:hover {
   height: 92px;
   display: grid;
   place-items: center;
-  border: 1px solid rgb(var(--paper-rgb) / 28%);
+  border: 1px solid var(--paper-border);
   font-family: var(--display);
   font-size: 36px;
   line-height: 1;
@@ -278,7 +278,7 @@ h4 {
 }
 
 .sidebar .plain-list li {
-  color: rgb(var(--paper-rgb) / 84%);
+  color: var(--sidebar-text);
 }
 
 .compact {
@@ -297,7 +297,7 @@ h4 {
   width: fit-content;
   min-height: 30px;
   align-items: center;
-  color: rgb(var(--paper-rgb) / 86%);
+  color: var(--sidebar-nav);
   font-size: 14px;
   transition:
     background-color 0.3s ease,
@@ -315,7 +315,7 @@ h4 {
   overscroll-behavior: contain;
   padding: 46px 52px 8px;
   background:
-    linear-gradient(180deg, rgb(var(--accent-surface-rgb) / 76%), transparent 250px),
+    linear-gradient(180deg, var(--main-wash), transparent 250px),
     var(--surface);
 }
 

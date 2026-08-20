@@ -131,13 +131,14 @@ function printPage() {
 
       <section class="identity">
         <p class="eyebrow">CV package</p>
-        <!-- TODO: Fix - make h1 smaller and also fit the whole section -->
         <h1 class="name">Ivan Aleksandrovskii</h1>
-        <!-- <h2>Ivan Aleksandrovskii</h2> -->
+        <!-- TODO: Edit - too complex and not including sales and service -->
         <p class="role">Versatile Technical Professional</p>
       </section>
 
       <section>
+        <!-- TODO: Edit style (make contacts use more than 1 line if
+              possible and if enough width show 3 in a row) & add Line -->
         <h2>Contact</h2>
         <ul class="contact-list">
           <li v-for="link in contactLinks" :key="link.label">

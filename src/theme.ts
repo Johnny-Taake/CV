@@ -26,7 +26,7 @@ function toCssDeclaration(name: string, value: string) {
 }
 
 export function applyTheme() {
-  const { tokens, webLayout } = theme
+  const { tokens, alpha, webLayout } = theme
   const variables = {
     '--paper': tokens.paper,
     '--surface': tokens.surface,
@@ -42,7 +42,15 @@ export function applyTheme() {
     '--accent-rgb': hexToRgbChannels(tokens.accent),
     '--accent-soft-rgb': hexToRgbChannels(tokens.accentSoft),
     '--accent-surface-rgb': hexToRgbChannels(tokens.accentSurface),
-    '--shadow': webLayout.shadow,
+    '--paper-border': `rgb(var(--paper-rgb) / ${alpha.paperBorder})`,
+    '--sidebar-text': `rgb(var(--paper-rgb) / ${alpha.sidebarText})`,
+    '--sidebar-nav': `rgb(var(--paper-rgb) / ${alpha.sidebarNav})`,
+    '--main-wash': `rgb(var(--accent-surface-rgb) / ${alpha.mainWash})`,
+    '--hover-accent-shadow-start': `0 0 0 0 rgb(var(--accent-rgb) / ${alpha.accentPulse})`,
+    '--hover-accent-shadow-end': `0 0 0 ${webLayout.hoverRingSize} rgb(var(--accent-rgb) / ${alpha.transparent})`,
+    '--hover-accent-soft-shadow-start': `0 0 0 0 rgb(var(--accent-soft-rgb) / ${alpha.accentSoftPulse})`,
+    '--hover-accent-soft-shadow-end': `0 0 0 ${webLayout.hoverRingSize} rgb(var(--accent-soft-rgb) / ${alpha.transparent})`,
+    '--shadow': `${webLayout.shellShadow} rgb(var(--ink-rgb) / ${alpha.shellShadow})`,
   }
 
   const existingStyle = document.getElementById('resume-theme')
